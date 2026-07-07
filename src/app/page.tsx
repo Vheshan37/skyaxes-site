@@ -199,15 +199,23 @@ export default function HomePage() {
           <p className="trust-belt-label">信頼いただいている企業 / TRUSTED BY</p>
           <div className="trust-belt-row">
             {[
-              { name: "OPExPARK",         abbr: "OPE",  color: "#2E75B6" },
-              { name: "Uhuru Corp.",       abbr: "UHU",  color: "#0D8F6F" },
-              { name: "SORACOM",           abbr: "SOR",  color: "#1A3C6E" },
-              { name: "Preferred Networks",abbr: "PFN",  color: "#4A90C4" },
-              { name: "eSolia",            abbr: "ESO",  color: "#2E75B6" },
-            ].map(({ name, abbr, color }) => (
-              <div key={name} className="trust-logo" style={{ "--logo-color": color } as React.CSSProperties}>
-                <span className="trust-logo-mark" aria-hidden="true">{abbr}</span>
-                <span className="trust-logo-name">{name}</span>
+              { name: "Travancore Analytics", src: "https://www.skyaxes.jp/wp-content/uploads/2020/06/travancore-analytics_logo.png" },
+              { name: "Curvelogics", src: "https://www.skyaxes.jp/wp-content/uploads/2020/06/curvelogics-a_logo.png" },
+              { name: "Thought Katalyst", src: "https://www.skyaxes.jp/wp-content/uploads/2020/06/thout-katalyst_logo.png" },
+              { name: "LiveRoom", src: "https://www.skyaxes.jp/wp-content/uploads/2020/06/liveroom_logo.png" },
+              { name: "Eimsky", src: "https://www.skyaxes.jp/wp-content/uploads/2020/06/eimsky_logo.png" },
+              { name: "Omobio", src: "https://www.skyaxes.jp/wp-content/uploads/2020/06/omobio_logo.png" },
+            ].map(({ name, src }) => (
+              <div key={name} className="trust-logo">
+                <div className="trust-logo-img-container">
+                  <img
+                    src={src}
+                    alt={name}
+                    width="140"
+                    height="48"
+                    className="trust-logo-img"
+                  />
+                </div>
               </div>
             ))}
           </div>

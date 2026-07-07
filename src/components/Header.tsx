@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 
@@ -94,16 +95,21 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex-shrink-0 font-bold text-xl tracking-tight"
+            className="flex-shrink-0 flex items-center"
             style={{
-              color: "var(--color-navy)",
-              fontFamily: "var(--font-jakarta)",
               maxWidth: 180,
               marginRight: 24,
             }}
             aria-label="SkyAxes ホーム"
           >
-            Sky<span style={{ color: "var(--color-accent)" }}>Axes</span>
+            <img
+              src="https://www.skyaxes.jp/wp-content/themes/skyaxes/images/logo.png"
+              alt="SkyAxes Logo"
+              width="160"
+              height="40"
+              className="object-contain"
+              style={{ maxHeight: 40, width: "auto" }}
+            />
           </Link>
 
           {/* Desktop nav links — hidden on mobile/tablet */}
