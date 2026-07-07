@@ -4,41 +4,63 @@ import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
 
 export const metadata: Metadata = {
-  title: "SkyAxes — 日本人PMが導くオフショア開発",
+  title: "SkyAxes — Japan-side PM-led Offshore Development",
   description:
-    "3D/VR・IoT・業務システムのオフショア開発パートナー。日本人PMによるプロジェクト管理で、現実的なコストと確かな品質を両立します。",
+    "We help manufacturing, dental/medical-adjacent and technical businesses turn specialized software ideas into practical systems at a realistic development cost.",
 };
+
+/* ─── Data ─────────────────────────────────────────────────── */
 
 const services = [
   {
-    icon: "🌐",
-    titleJP: "オフショア開発",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <circle cx="14" cy="14" r="13" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M9 14h10M14 9v10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="14" cy="14" r="3" fill="currentColor" />
+      </svg>
+    ),
     titleEN: "Offshore Development",
-    desc: "日本人PMが要件定義・設計・品質管理を一括担当。現実的なコストで確かな開発を実現します。",
-    descEN: "Japan-side PM manages requirements, design, and QA end-to-end.",
+    titleJP: "オフショア開発",
+    desc: "Japan-side PM manages requirements, design, offshore team communication, and QA end-to-end — at a realistic development cost.",
     href: "/services/offshore",
-    accentCls: "service-card service-card-accent",
-    accent: "var(--color-accent)",
+    accentColor: "var(--color-accent)",
+    accentBg: "rgba(46,117,182,0.10)",
+    hoverClass: "service-card-accent",
+    tag: "Main service",
   },
   {
-    icon: "🎯",
-    titleJP: "3D・VR・AR開発",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="3" y="3" width="22" height="22" rx="4" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M8 20l4-8 4 6 2-3 3 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
     titleEN: "3D / VR / AR Development",
-    desc: "歯科用3Dビューアをはじめとする高度な3D可視化・VR/ARアプリケーションの受託開発。",
-    descEN: "Advanced 3D visualization, VR/AR applications from dental to industrial.",
+    titleJP: "3D・VR・AR開発",
+    desc: "Advanced 3D visualization, VR/AR applications, and image processing — from dental/medical-adjacent software to industrial training.",
     href: "/services/3dvrar",
-    accentCls: "service-card service-card-clinical",
-    accent: "var(--color-clinical)",
+    accentColor: "var(--color-clinical)",
+    accentBg: "rgba(74,144,196,0.10)",
+    hoverClass: "service-card-clinical",
+    tag: "Specialized",
   },
   {
-    icon: "⚙️",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="12" width="6" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
+        <rect x="11" y="7" width="6" height="17" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
+        <rect x="18" y="4" width="6" height="20" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
+      </svg>
+    ),
+    titleEN: "IoT / Manufacturing Systems",
     titleJP: "IoT・製造システム",
-    titleEN: "IoT & Manufacturing",
-    desc: "品質管理・センサーデータ収集・工場管理システムの設計・開発。LineQCも提供中。",
-    descEN: "QC, sensor data pipelines, and factory management systems.",
+    desc: "QC systems, sensor data pipelines, factory management software. Real-world LineQC deployment running in production.",
     href: "/services/iot",
-    accentCls: "service-card service-card-iot",
-    accent: "var(--color-green-iot)",
+    accentColor: "var(--color-green-iot)",
+    accentBg: "rgba(13,143,111,0.10)",
+    hoverClass: "service-card-iot",
+    tag: "In production",
   },
 ];
 
@@ -51,147 +73,176 @@ const flowSteps = [
   { num: "06", jp: "運用・保守", en: "Maintenance" },
 ];
 
-const partners = ["OPExPARK", "Uhuru Corp.", "SORACOM", "Preferred Networks", "eSolia"];
+const proofItems = [
+  {
+    tag: "Manufacturing / IoT",
+    tagColor: "var(--color-green-iot)",
+    tagBg: "var(--color-green-light)",
+    title: "LineQC — Manufacturing Line Quality Control",
+    titleJP: "製造ライン品質管理システム",
+    desc: "Real-time sensor data collection, line visualization, and automated QC for manufacturing floors. Running in production — proof of SkyAxes factory-system capability.",
+    metric: "Real-time",
+    metricLabel: "QC monitoring",
+    metricColor: "var(--color-green-iot)",
+    href: "/lineqc",
+    cta: "View LineQC →",
+    imgSrc: "/images/services-iot.jpg",
+    imgAlt: "LineQC manufacturing line quality control system dashboard",
+  },
+  {
+    tag: "AR Training",
+    tagColor: "var(--color-accent)",
+    tagBg: "rgba(46,117,182,0.10)",
+    title: "AR-based Industrial Training",
+    titleJP: "AR産業トレーニングシステム",
+    desc: "Augmented reality overlays guide technicians through complex assembly and maintenance procedures — reducing onboarding time and human error on the factory floor.",
+    metric: "AR-guided",
+    metricLabel: "Step-by-step training",
+    metricColor: "var(--color-accent)",
+    href: "/services/3dvrar",
+    cta: "View 3D/VR/AR Services →",
+    imgSrc: "/images/dental-screenshots.jpg",
+    imgAlt: "AR industrial training system overlaying assembly instructions",
+  },
+];
+
+/* ─── Page ──────────────────────────────────────────────────── */
 
 export default function HomePage() {
   return (
     <>
-      {/* ════ HERO ════ */}
-      <section className="section-white" style={{ paddingTop: 96, paddingBottom: 80 }}>
+      {/* ════════════════════════════════
+          HERO
+      ════════════════════════════════ */}
+      <section
+        className="section-white"
+        style={{ paddingTop: 80, paddingBottom: 88 }}
+        aria-label="メインビジュアル"
+      >
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-16 items-center">
-            <div>
-              <p
-                className="text-xs font-semibold uppercase tracking-widest mb-6"
-                style={{ color: "var(--color-accent)", letterSpacing: "0.08em", fontFamily: "var(--font-jakarta)" }}
-              >
-                オフショア開発パートナー&nbsp;/&nbsp;Offshore Development Partner
+          <div className="hero-grid">
+            {/* ── Left copy ── */}
+            <div className="hero-copy">
+              <p className="hero-eyebrow">
+                Offshore Development Partner&nbsp;/&nbsp;オフショア開発パートナー
               </p>
-              <h1
-                className="font-bold leading-tight mb-5"
-                style={{
-                  fontSize: "clamp(26px, 4vw, 42px)",
-                  color: "var(--color-navy)",
-                  fontFamily: "var(--font-noto)",
-                  lineHeight: 1.4,
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                日本人PMが導く、<br />
-                3D/VR・IoT・業務システムの<br />
-                オフショア開発
+
+              <h1 className="hero-headline">
+                Japan-side PM-led
+                <br />
+                Offshore Development
+                <br />
+                <span className="hero-headline-accent">
+                  for 3D/VR, IoT &amp; Business Systems
+                </span>
               </h1>
-              <p
-                className="mb-8"
-                style={{ fontSize: 16, color: "var(--color-muted)", maxWidth: 480, fontFamily: "var(--font-jakarta)", lineHeight: 1.75 }}
-              >
-                Japan-side PM-led offshore development for 3D/VR, IoT, and business systems —
-                built on realistic development costs and disciplined delivery, not the cheapest bid.
+
+              <p className="hero-sub">
+                We help manufacturing, dental/medical-adjacent and technical
+                businesses turn specialized software ideas into practical
+                systems at a realistic development cost.
               </p>
-              <Link href="/services" className="btn-primary">
-                サービスを見る&nbsp;<span style={{ fontFamily: "var(--font-jakarta)" }}>/ View Services</span>
-              </Link>
+
+              <div className="hero-ctas">
+                <Link href="/contact" className="btn-primary hero-btn-primary" id="hero-cta-consult">
+                  Discuss an Offshore Development Project
+                </Link>
+                <Link href="/case-studies" className="btn-outline hero-btn-secondary" id="hero-cta-cases">
+                  View 3D/VR Case Studies
+                </Link>
+              </div>
+
+              {/* Trust badges */}
+              <div className="hero-badges">
+                <span className="hero-badge">
+                  <span className="hero-badge-dot" style={{ background: "var(--color-green-iot)" }} />
+                  Japan-side PM
+                </span>
+                <span className="hero-badge">
+                  <span className="hero-badge-dot" style={{ background: "var(--color-accent)" }} />
+                  Realistic cost
+                </span>
+                <span className="hero-badge">
+                  <span className="hero-badge-dot" style={{ background: "var(--color-clinical)" }} />
+                  Technical QA
+                </span>
+              </div>
             </div>
 
-            <div className="relative order-first lg:order-last">
-              <div
-                className="relative overflow-hidden"
-                style={{ borderRadius: 16, border: "1px solid var(--color-border)", boxShadow: "var(--shadow-card)" }}
-              >
+            {/* ── Right: hero image ── */}
+            <div className="hero-visual" aria-hidden="true">
+              <div className="hero-img-wrap">
                 <Image
                   src="/images/hero-dental-3d.jpg"
-                  alt="歯科用3Dビューア — DentalViewer 3D ソフトウェア画面"
+                  alt="Dental 3D Viewer — flagship case study developed by SkyAxes"
                   width={700}
                   height={525}
                   className="w-full h-auto block"
                   priority
+                  style={{ borderRadius: 12 }}
                 />
-              </div>
-              <div
-                className="absolute -bottom-4 -left-4 hidden lg:block"
-                style={{
-                  background: "#ffffff",
-                  border: "1px solid var(--color-border)",
-                  borderRadius: 10,
-                  padding: "12px 18px",
-                  boxShadow: "var(--shadow-card)",
-                }}
-              >
-                <p className="text-xs" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>
-                  Dental 3D Viewer
-                </p>
-                <p className="font-bold text-sm" style={{ color: "var(--color-navy)", fontFamily: "var(--font-jakarta)" }}>
-                  フラッグシップ事例
-                </p>
+                {/* Floating badge */}
+                <div className="hero-float-badge">
+                  <p className="hero-float-label">Featured case study</p>
+                  <p className="hero-float-title">Dental 3D Viewer</p>
+                  <span className="hero-float-chip">Qt / OpenGL · Windows</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ════ TRUST RIBBON ════ */}
-      <section className="section-surface" style={{ paddingBlock: 80 }}>
+      {/* ════════════════════════════════
+          THREE SERVICE CARDS
+      ════════════════════════════════ */}
+      <section
+        className="section-surface"
+        style={{ paddingBlock: 88 }}
+        aria-labelledby="services-heading"
+      >
         <FadeInSection>
           <div className="container-site">
-            <p
-              className="text-center mb-8 text-xs font-medium tracking-widest uppercase"
-              style={{ color: "var(--color-muted)", letterSpacing: "0.05em", fontFamily: "var(--font-jakarta)" }}
-            >
-              信頼いただいている企業&nbsp;/&nbsp;Trusted By
-            </p>
-            {/* Desktop */}
-            <div className="hidden md:flex justify-center items-center flex-wrap gap-14">
-              {partners.map((name) => (
-                <div key={name} className="trust-logo" style={{ height: 32, display: "flex", alignItems: "center" }}>
-                  <span className="font-bold text-sm tracking-tight" style={{ color: "var(--color-navy)", fontFamily: "var(--font-jakarta)" }}>
-                    {name}
-                  </span>
-                </div>
-              ))}
+            <div className="section-header">
+              <p className="section-eyebrow">What we build</p>
+              <h2 id="services-heading" className="section-title">
+                Our Services
+              </h2>
+              <p className="section-sub">
+                Three focused disciplines — all managed Japan-side, delivered offshore.
+              </p>
             </div>
-            {/* Mobile scroll */}
-            <div className="md:hidden trust-fade-wrap">
-              <div className="trust-scroll px-10">
-                {partners.map((name) => (
-                  <div key={name} className="trust-logo" style={{ height: 32, display: "flex", alignItems: "center" }}>
-                    <span className="font-bold text-sm" style={{ color: "var(--color-navy)", fontFamily: "var(--font-jakarta)", whiteSpace: "nowrap" }}>
-                      {name}
+
+            <div className="services-grid">
+              {services.map(({ icon, titleEN, titleJP, desc, href, accentColor, accentBg, hoverClass, tag }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`service-card ${hoverClass}`}
+                  aria-label={`${titleEN} サービスページへ`}
+                >
+                  <div className="service-card-top">
+                    <div
+                      className="service-icon"
+                      style={{ background: accentBg, color: accentColor }}
+                    >
+                      {icon}
+                    </div>
+                    <span
+                      className="service-tag"
+                      style={{ color: accentColor, background: accentBg }}
+                    >
+                      {tag}
                     </span>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </FadeInSection>
-      </section>
-
-      {/* ════ SERVICES ════ */}
-      <section className="section-white" style={{ paddingBlock: 88 }}>
-        <FadeInSection>
-          <div className="container-site">
-            <div className="mb-12 text-center">
-              <h2 className="font-bold mb-3" style={{ fontSize: "clamp(22px, 3vw, 32px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
-                サービス
-              </h2>
-              <p style={{ fontSize: 15, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>Our Services</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {services.map(({ icon, titleJP, titleEN, desc, descEN, href, accentCls, accent }) => (
-                <Link key={href} href={href} className={accentCls}>
-                  <div
-                    className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl mb-5"
-                    style={{ background: `${accent}18` }}
+                  <h3 className="service-title-en">{titleEN}</h3>
+                  <p className="service-title-jp">{titleJP}</p>
+                  <p className="service-desc">{desc}</p>
+                  <p
+                    className="service-link"
+                    style={{ color: accentColor }}
                   >
-                    {icon}
-                  </div>
-                  <h3 className="font-bold mb-1" style={{ fontSize: 18, color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
-                    {titleJP}
-                  </h3>
-                  <p className="text-xs mb-3" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>{titleEN}</p>
-                  <p style={{ fontSize: 14, color: "var(--color-text)", lineHeight: 1.75, fontFamily: "var(--font-noto)" }}>{desc}</p>
-                  <p className="mt-2 text-xs" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>{descEN}</p>
-                  <p className="mt-5 text-sm font-semibold flex items-center gap-1" style={{ color: accent, fontFamily: "var(--font-jakarta)" }}>
-                    詳しく見る&nbsp;→
+                    Learn more →
                   </p>
                 </Link>
               ))}
@@ -200,75 +251,165 @@ export default function HomePage() {
         </FadeInSection>
       </section>
 
-      {/* ════ FEATURED CASE STUDY ════ */}
-      <section className="section-surface" style={{ paddingBlock: 88 }}>
+      {/* ════════════════════════════════
+          FEATURED CASE STUDY — Dental 3D Viewer
+      ════════════════════════════════ */}
+      <section
+        className="section-white"
+        style={{ paddingBlock: 88 }}
+        aria-labelledby="case-study-heading"
+      >
         <FadeInSection>
           <div className="container-site">
-            <div className="mb-12">
-              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)", letterSpacing: "0.08em" }}>
-                Featured Case Study
-              </p>
-              <h2 className="font-bold" style={{ fontSize: "clamp(22px, 3vw, 32px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
-                フラッグシップ導入事例
+            <div className="section-header">
+              <p className="section-eyebrow">Featured case study</p>
+              <h2 id="case-study-heading" className="section-title">
+                Dental 3D Viewer Development
               </h2>
             </div>
-            <div
-              className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden rounded-xl"
-              style={{ border: "1px solid var(--color-border)", background: "#ffffff", boxShadow: "var(--shadow-card)" }}
-            >
-              <div className="relative h-64 lg:h-auto">
-                <Image src="/images/hero-dental-3d.jpg" alt="歯科用3Dビューア" fill className="object-cover" />
-              </div>
-              <div className="p-10 flex flex-col justify-center">
-                <div className="mb-6" style={{ width: 40, height: 4, background: "var(--color-clinical)", borderRadius: 2 }} />
-                <span className="tag-clinical mb-4 self-start">医療&nbsp;/&nbsp;Healthcare</span>
-                <h3 className="font-bold mb-2" style={{ fontSize: "clamp(18px, 2.5vw, 24px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)", lineHeight: 1.45 }}>
-                  歯科用3Dビューア導入事例
-                </h3>
-                <p className="text-sm mb-2" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>Dental 3D Viewer Implementation</p>
-                <p className="mb-6 text-sm" style={{ color: "var(--color-text)", fontFamily: "var(--font-noto)", lineHeight: 1.75 }}>
-                  歯科診療現場でのリアルタイム3Dスキャンデータ可視化を実現。Qt/OpenGLベースのWindowsアプリケーションとして納品。
-                </p>
-                <div className="flex items-center gap-2 mb-8 p-4 rounded-lg" style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)" }}>
-                  <span className="text-2xl font-bold" style={{ color: "var(--color-clinical)", fontFamily: "var(--font-jakarta)" }}>&lt;50ms</span>
-                  <span className="text-sm" style={{ color: "var(--color-muted)", fontFamily: "var(--font-noto)" }}>描画レイテンシ&nbsp;/&nbsp;Rendering latency</span>
+
+            <div className="case-study-card">
+              {/* Image panel */}
+              <div className="case-study-img-panel">
+                <Image
+                  src="/images/dental-screenshots.jpg"
+                  alt="Dental 3D Viewer application screenshot — SkyAxes flagship project"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="case-study-img-overlay">
+                  <span className="tag-clinical">Healthcare / 医療</span>
                 </div>
-                <Link href="/case-studies/dental-3d-viewer" className="btn-primary self-start">事例の詳細を見る&nbsp;→</Link>
               </div>
-            </div>
-            <div className="mt-6 text-right">
-              <Link href="/case-studies" className="text-sm font-semibold" style={{ color: "var(--color-accent)", fontFamily: "var(--font-jakarta)" }}>
-                すべての事例を見る&nbsp;→
-              </Link>
+
+              {/* Content panel */}
+              <div className="case-study-content">
+                <div className="case-accent-bar" style={{ background: "var(--color-clinical)" }} />
+
+                <h3 className="case-title">
+                  歯科用3Dビューア
+                  <br />
+                  <span className="case-title-en">Dental 3D Viewer</span>
+                </h3>
+
+                <p className="case-desc">
+                  Real-time 3D scan data visualization for dental clinics.
+                  Delivered as a Windows application using Qt and OpenGL — built
+                  for usability, extensibility and practical implementation cost.
+                </p>
+
+                <div className="case-metrics">
+                  <div className="case-metric">
+                    <span
+                      className="case-metric-value"
+                      style={{ color: "var(--color-clinical)" }}
+                    >
+                      &lt;50ms
+                    </span>
+                    <span className="case-metric-label">Rendering latency</span>
+                  </div>
+                  <div className="case-metric">
+                    <span
+                      className="case-metric-value"
+                      style={{ color: "var(--color-clinical)" }}
+                    >
+                      Qt/OpenGL
+                    </span>
+                    <span className="case-metric-label">Technology stack</span>
+                  </div>
+                  <div className="case-metric">
+                    <span
+                      className="case-metric-value"
+                      style={{ color: "var(--color-clinical)" }}
+                    >
+                      Windows
+                    </span>
+                    <span className="case-metric-label">Deployment</span>
+                  </div>
+                </div>
+
+                <div className="case-ctas">
+                  <Link
+                    href="/case-studies/dental-3d-viewer"
+                    className="btn-primary"
+                    id="case-study-cta-dental"
+                  >
+                    View case study →
+                  </Link>
+                  <Link
+                    href="/case-studies"
+                    className="case-all-link"
+                  >
+                    All case studies →
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </FadeInSection>
       </section>
 
-      {/* ════ DEVELOPMENT FLOW ════ */}
-      <section className="section-white" style={{ paddingBlock: 88 }}>
+      {/* ════════════════════════════════
+          SUPPORTING PROOF — LineQC + AR Training
+      ════════════════════════════════ */}
+      <section
+        className="section-surface"
+        style={{ paddingBlock: 88 }}
+        aria-labelledby="proof-heading"
+      >
         <FadeInSection>
           <div className="container-site">
-            <div className="mb-12 text-center">
-              <h2 className="font-bold mb-2" style={{ fontSize: "clamp(22px, 3vw, 32px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
-                開発フロー
+            <div className="section-header">
+              <p className="section-eyebrow">Supporting proof</p>
+              <h2 id="proof-heading" className="section-title">
+                Real Deployments
               </h2>
-              <p style={{ fontSize: 14, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>Development Process</p>
+              <p className="section-sub">
+                SkyAxes capabilities backed by live and delivered projects.
+              </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {flowSteps.map(({ num, jp, en }, i) => (
-                <div key={num} className="relative flex flex-col items-center text-center">
-                  {i < flowSteps.length - 1 && (
-                    <div className="absolute top-6 left-1/2 w-full h-px hidden lg:block" style={{ background: "var(--color-border)", zIndex: 0 }} />
-                  )}
-                  <div
-                    className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm mb-4"
-                    style={{ background: "var(--color-navy)", color: "#ffffff", fontFamily: "var(--font-jakarta)" }}
-                  >
-                    {num}
+
+            <div className="proof-grid">
+              {proofItems.map((item) => (
+                <div key={item.title} className="proof-card">
+                  <div className="proof-img-wrap">
+                    <Image
+                      src={item.imgSrc}
+                      alt={item.imgAlt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="proof-img-overlay" />
                   </div>
-                  <p className="font-semibold text-sm mb-1" style={{ color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>{jp}</p>
-                  <p className="text-xs" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>{en}</p>
+                  <div className="proof-content">
+                    <span
+                      className="proof-tag"
+                      style={{ color: item.tagColor, background: item.tagBg }}
+                    >
+                      {item.tag}
+                    </span>
+                    <h3 className="proof-title">{item.title}</h3>
+                    <p className="proof-title-jp">{item.titleJP}</p>
+                    <p className="proof-desc">{item.desc}</p>
+                    <div
+                      className="proof-metric-chip"
+                      style={{ borderColor: item.metricColor + "33", background: item.metricColor + "0d" }}
+                    >
+                      <span className="proof-metric-val" style={{ color: item.metricColor }}>
+                        {item.metric}
+                      </span>
+                      <span className="proof-metric-lbl">{item.metricLabel}</span>
+                    </div>
+                    <Link
+                      href={item.href}
+                      className="proof-cta"
+                      style={{ color: item.tagColor }}
+                    >
+                      {item.cta}
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -276,50 +417,105 @@ export default function HomePage() {
         </FadeInSection>
       </section>
 
-      {/* ════ LINEQC PROOF ════ */}
-      <section className="section-surface" style={{ paddingBlock: 88 }}>
+      {/* ════════════════════════════════
+          DEVELOPMENT FLOW
+      ════════════════════════════════ */}
+      <section
+        className="section-white"
+        style={{ paddingBlock: 88 }}
+        aria-labelledby="flow-heading"
+      >
         <FadeInSection>
           <div className="container-site">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <span className="tag-iot mb-5 inline-block">製造&nbsp;/&nbsp;Manufacturing</span>
-                <h2 className="font-bold mb-3" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)", lineHeight: 1.45 }}>
-                  LineQC — 製造ライン品質管理システム
-                </h2>
-                <p className="text-sm mb-2" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>Manufacturing Line Quality Control System</p>
-                <p className="mb-8" style={{ fontSize: 14, color: "var(--color-text)", lineHeight: 1.75, fontFamily: "var(--font-noto)" }}>
-                  製造現場のラインデータを収集・可視化し、品質管理を自動化するシステム。SkyAxesの工場系システム開発力の実績として現在も稼働中です。
-                </p>
-                <Link href="/lineqc" className="btn-outline">LineQCの詳細&nbsp;→</Link>
-              </div>
-              <div>
-                <Image
-                  src="/images/services-iot.jpg"
-                  alt="IoT製造分析プラットフォーム"
-                  width={620}
-                  height={430}
-                  className="w-full h-auto rounded-xl"
-                  style={{ border: "1px solid var(--color-border)", boxShadow: "var(--shadow-card)" }}
-                />
-              </div>
+            <div className="section-header">
+              <p className="section-eyebrow">How we work</p>
+              <h2 id="flow-heading" className="section-title">
+                Development Process
+              </h2>
+              <p className="section-sub">
+                From first consultation to long-term operation — Japan-side PM guides every stage.
+              </p>
+            </div>
+
+            <div className="flow-grid">
+              {flowSteps.map(({ num, jp, en }, i) => (
+                <div key={num} className="flow-step">
+                  {/* connector line */}
+                  {i < flowSteps.length - 1 && (
+                    <div className="flow-connector" aria-hidden="true" />
+                  )}
+                  <div className="flow-circle">
+                    <span>{num}</span>
+                  </div>
+                  <p className="flow-label-jp">{jp}</p>
+                  <p className="flow-label-en">{en}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* PM note */}
+            <div className="flow-note">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <circle cx="9" cy="9" r="8" stroke="var(--color-accent)" strokeWidth="1.5" />
+                <path d="M9 8v5M9 6v.5" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+              <span>
+                A Japan-side PM owns communication, specification, and QA throughout — not just during kickoff.
+              </span>
             </div>
           </div>
         </FadeInSection>
       </section>
 
-      {/* ════ FINAL CTA ════ */}
-      <section className="section-white" style={{ paddingBlock: 96 }}>
+      {/* ════════════════════════════════
+          CONTACT CTA — Development consultations only
+      ════════════════════════════════ */}
+      <section
+        className="section-navy"
+        style={{ paddingBlock: 96 }}
+        aria-labelledby="cta-heading"
+      >
         <FadeInSection>
-          <div className="container-site text-center">
-            <h2 className="font-bold mb-4" style={{ fontSize: "clamp(22px, 3vw, 34px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
-              開発のご相談はお気軽に
+          <div className="container-site cta-inner">
+            <p className="cta-eyebrow">Get in touch</p>
+            <h2 id="cta-heading" className="cta-heading">
+              Discuss an Offshore
+              <br />
+              Development Project
             </h2>
-            <p className="mb-10 mx-auto" style={{ fontSize: 15, color: "var(--color-muted)", maxWidth: 480, fontFamily: "var(--font-jakarta)", lineHeight: 1.75 }}>
-              Japan-side PM-led development consultations only. We aim to respond within 2 business days.
+            <p className="cta-sub">
+              We respond to qualified project inquiries within 2 business days.
             </p>
-            <Link href="/contact" className="btn-primary text-base" style={{ padding: "14px 32px" }}>
-              お問い合わせはこちら&nbsp;/&nbsp;Contact Us
-            </Link>
+
+            {/* Anti-sales notice */}
+            <div className="cta-notice" role="note">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0, marginTop: 2 }}>
+                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M8 5v4M8 11v.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+              </svg>
+              <span>
+                <strong>Development consultations only.</strong> This form is for system, offshore,
+                3D/VR/AR and IoT development inquiries. Sales pitches, recruiting, advertising,
+                SEO offers and web-production proposals will not receive a reply.
+              </span>
+            </div>
+
+            <div className="cta-buttons">
+              <Link
+                href="/contact"
+                className="cta-btn-primary"
+                id="final-cta-contact"
+              >
+                Start a Consultation →
+              </Link>
+              <Link
+                href="/services/offshore"
+                className="cta-btn-ghost"
+                id="final-cta-services"
+              >
+                Learn about Offshore Development
+              </Link>
+            </div>
           </div>
         </FadeInSection>
       </section>

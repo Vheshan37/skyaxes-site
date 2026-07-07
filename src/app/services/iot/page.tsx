@@ -8,12 +8,30 @@ export const metadata: Metadata = {
 };
 
 const features = [
-  { icon: "📡", jp: "センサーデータ収集", en: "Sensor Data Collection" },
-  { icon: "📊", jp: "リアルタイム可視化", en: "Real-time Visualization" },
-  { icon: "🔍", jp: "品質管理・異常検知", en: "QC & Anomaly Detection" },
-  { icon: "🏭", jp: "ライン管理システム", en: "Production Line Management" },
-  { icon: "📱", jp: "モバイル対応", en: "Mobile Compatibility" },
-  { icon: "🔗", jp: "ERP・MES連携", en: "ERP / MES Integration" },
+  {
+    svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5.5 12a6.5 6.5 0 1013 0 6.5 6.5 0 00-13 0zm6.5 0v-3m0 0l-2 2m2-2l2 2" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2" /></svg>,
+    jp: "センサーデータ収集", en: "Sensor Data Collection",
+  },
+  {
+    svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 17l3-5 3 4 2-3 3 4" /></svg>,
+    jp: "リアルタイム可視化", en: "Real-time Visualization",
+  },
+  {
+    svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>,
+    jp: "品質管理・異常検知", en: "QC & Anomaly Detection",
+  },
+  {
+    svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" /><line x1="12" y1="12" x2="12" y2="16" /><line x1="10" y1="14" x2="14" y2="14" /></svg>,
+    jp: "ライン管理システム", en: "Production Line Management",
+  },
+  {
+    svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>,
+    jp: "モバイル対応", en: "Mobile Compatibility",
+  },
+  {
+    svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" /></svg>,
+    jp: "ERP・MES連携", en: "ERP / MES Integration",
+  },
 ];
 
 export default function IoTPage() {
@@ -46,13 +64,18 @@ export default function IoTPage() {
                 対応可能なシステム範囲
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {features.map(({ icon, jp, en }) => (
+                {features.map(({ svg, jp, en }) => (
                   <div
                     key={jp}
                     className="p-5 rounded-xl flex items-start gap-4"
                     style={{ border: "1px solid var(--color-border)", background: "var(--color-surface)" }}
                   >
-                    <span className="text-xl flex-shrink-0">{icon}</span>
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: "rgba(13,143,111,0.10)", color: "var(--color-green-iot)" }}
+                    >
+                      {svg}
+                    </div>
                     <div>
                       <p className="font-semibold text-sm" style={{ color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
                         {jp}

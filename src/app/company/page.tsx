@@ -20,28 +20,51 @@ const companyInfo = [
 
 const strengths = [
   {
-    icon: "🇯🇵",
+    svg: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 8v4l3 3" />
+      </svg>
+    ),
     titleJP: "日本人PM主導",
     titleEN: "Japan-side PM Leadership",
     desc: "要件定義・仕様書作成・品質管理・クライアントコミュニケーションを日本語で行います。",
+    color: "var(--color-accent)",
   },
   {
-    icon: "🎯",
+    svg: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="3" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
     titleJP: "技術特化",
     titleEN: "Technical Specialization",
     desc: "3D/VR、IoT、業務システムに特化。汎用的なオフショア仲介とは異なる専門性を提供します。",
+    color: "var(--color-clinical)",
   },
   {
-    icon: "💼",
+    svg: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+    ),
     titleJP: "現実的なコスト",
     titleEN: "Realistic Cost",
     desc: "最安値ではなく、品質と価格のバランスを重視した「コスト効率の高い開発」を提供します。",
+    color: "var(--color-green-iot)",
   },
   {
-    icon: "🔧",
+    svg: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" />
+      </svg>
+    ),
     titleJP: "運用・保守まで対応",
     titleEN: "Post-launch Support",
     desc: "納品後の運用・保守・機能追加まで継続的にサポートします。",
+    color: "var(--color-navy)",
   },
 ];
 
@@ -101,13 +124,18 @@ export default function CompanyPage() {
 
             {/* Strengths */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {strengths.map(({ icon, titleJP, titleEN, desc }) => (
+              {strengths.map(({ svg, titleJP, titleEN, desc, color }) => (
                 <div
                   key={titleJP}
                   className="p-6 rounded-xl"
                   style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)" }}
                 >
-                  <div className="text-2xl mb-3">{icon}</div>
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                    style={{ background: `${color}18`, color }}
+                  >
+                    {svg}
+                  </div>
                   <p
                     className="font-bold mb-1"
                     style={{ fontSize: 15, color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}

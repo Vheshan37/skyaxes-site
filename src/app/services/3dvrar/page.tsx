@@ -10,12 +10,30 @@ export const metadata: Metadata = {
 };
 
 const capabilities = [
-  { icon: "🦷", jp: "3D可視化", en: "3D Visualization", desc: "歯科・医療・産業用の高精度3Dレンダリング" },
-  { icon: "🔬", jp: "データインポート", en: "Data Import", desc: "STL/OBJ/DICOMなど各種3Dフォーマット対応" },
-  { icon: "💻", jp: "Windowsアプリ", en: "Windows Desktop", desc: "Qt/OpenGLベースの業務用デスクトップアプリ" },
-  { icon: "🥽", jp: "VR/AR拡張", en: "VR/AR Extension", desc: "将来的なVR/AR対応に備えたアーキテクチャ設計" },
-  { icon: "📊", jp: "断面解析", en: "Cross-section Analysis", desc: "リアルタイムスライス・計測・アノテーション" },
-  { icon: "⚡", jp: "低レイテンシ描画", en: "Low-latency Rendering", desc: "50ms以下の描画応答を実現" },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>,
+    jp: "3D可視化", en: "3D Visualization", desc: "歯科・医療・産業用の高精度3Dレンダリング",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 3l4 9-4 9h14l-4-9 4-9H5z" /></svg>,
+    jp: "データインポート", en: "Data Import", desc: "STL/OBJ/DICOMなど各種3Dフォーマット対応",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8m-4-4v4" /></svg>,
+    jp: "Windowsアプリ", en: "Windows Desktop", desc: "Qt/OpenGLベースの業務用デスクトップアプリ",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" /><circle cx="12" cy="12" r="3" /></svg>,
+    jp: "VR/AR拡張", en: "VR/AR Extension", desc: "将来的なVR/AR対応に備えたアーキテクチャ設計",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="5" x2="19" y2="19" /></svg>,
+    jp: "断面解析", en: "Cross-section Analysis", desc: "リアルタイムスライス・計測・アノテーション",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>,
+    jp: "低レイテンシ描画", en: "Low-latency Rendering", desc: "50ms以下の描画応答を実現",
+  },
 ];
 
 export default function ThreeDVRPage() {
@@ -92,13 +110,18 @@ export default function ThreeDVRPage() {
               技術ケイパビリティ&nbsp;<span style={{ fontFamily: "var(--font-jakarta)", fontSize: 18, fontWeight: 400, color: "var(--color-muted)" }}>Technical Capabilities</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {capabilities.map(({ icon, jp, en, desc }) => (
+              {capabilities.map(({ svg, jp, en, desc }) => (
                 <div
                   key={jp}
                   className="p-6 rounded-xl"
                   style={{ background: "#ffffff", border: "1px solid var(--color-border)" }}
                 >
-                  <div className="text-2xl mb-3">{icon}</div>
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                    style={{ background: "rgba(74,144,196,0.12)", color: "var(--color-clinical)" }}
+                  >
+                    {svg}
+                  </div>
                   <p
                     className="font-bold mb-1"
                     style={{ fontSize: 16, color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}

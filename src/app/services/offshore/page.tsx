@@ -9,12 +9,30 @@ export const metadata: Metadata = {
 };
 
 const strengths = [
-  { icon: "🗂️", jp: "要件定義・仕様書作成", en: "Requirements & Specification" },
-  { icon: "🎨", jp: "UI/UXデザイン", en: "UI/UX Design" },
-  { icon: "👥", jp: "オフショアチーム管理", en: "Offshore Team Management" },
-  { icon: "✅", jp: "テスト・品質保証", en: "Testing & QA" },
-  { icon: "🤝", jp: "検収サポート", en: "Acceptance Support" },
-  { icon: "🔧", jp: "運用・保守", en: "Operation & Maintenance" },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>,
+    jp: "要件定義・仕様書作成", en: "Requirements & Specification",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" y1="9" x2="9.01" y2="9" /><line x1="15" y1="9" x2="15.01" y2="9" /></svg>,
+    jp: "UI/UXデザイン", en: "UI/UX Design",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>,
+    jp: "オフショアチーム管理", en: "Offshore Team Management",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>,
+    jp: "テスト・品質保証", en: "Testing & QA",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" /></svg>,
+    jp: "検収サポート", en: "Acceptance Support",
+  },
+  {
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" /><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" /></svg>,
+    jp: "運用・保守", en: "Operation & Maintenance",
+  },
 ];
 
 const faq = [
@@ -168,13 +186,18 @@ export default function OffshorePage() {
               対応サービス範囲
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {strengths.map(({ icon, jp, en }) => (
+              {strengths.map(({ svg, jp, en }) => (
                 <div
                   key={jp}
                   className="p-6 rounded-xl text-center"
                   style={{ background: "#ffffff", border: "1px solid var(--color-border)" }}
                 >
-                  <div className="text-3xl mb-3">{icon}</div>
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3"
+                    style={{ background: "rgba(46,117,182,0.10)", color: "var(--color-accent)" }}
+                  >
+                    {svg}
+                  </div>
                   <p className="font-semibold text-sm mb-1" style={{ color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
                     {jp}
                   </p>

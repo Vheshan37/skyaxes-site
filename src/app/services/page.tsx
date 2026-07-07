@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    icon: "🌐",
+    svgPath: "M14 2a12 12 0 100 24A12 12 0 0014 2zm0 2a10 10 0 110 20A10 10 0 0114 4zm-1 5v4H9l5 8 5-8h-4V9h-2z",
     tag: "Offshore",
     titleJP: "オフショア開発",
     titleEN: "Offshore Development",
@@ -20,7 +20,7 @@ const services = [
     tagClass: "tag-navy",
   },
   {
-    icon: "🎯",
+    svgPath: "M4 4h16v2H4V4zm0 4h10v2H4V8zm0 4h16v2H4v-2zm0 4h10v2H4v-2z",
     tag: "3D / VR / AR",
     titleJP: "3D・VR・AR開発",
     titleEN: "3D / VR / AR Development",
@@ -30,7 +30,7 @@ const services = [
     tagClass: "tag-clinical",
   },
   {
-    icon: "⚙️",
+    svgPath: "M4 17h16v2H4v-2zm0-6h4v4H4v-4zm6-4h4v8h-4V7zm6 2h4v6h-4V9z",
     tag: "IoT / Manufacturing",
     titleJP: "IoT・製造システム",
     titleEN: "IoT & Manufacturing Systems",
@@ -69,7 +69,7 @@ export default function ServicesPage() {
       <section className="section-white" style={{ paddingBlock: 88 }}>
         <div className="container-site">
           <div className="grid grid-cols-1 gap-6">
-            {services.map(({ icon, tag, titleJP, titleEN, desc, href, accent, tagClass }, i) => (
+            {services.map(({ svgPath, tag, titleJP, titleEN, desc, href, accent, tagClass }, i) => (
               <FadeInSection key={href}>
                 <div
                   className="grid grid-cols-1 lg:grid-cols-[80px_1fr_auto] gap-6 lg:gap-10 items-center p-8 rounded-xl border transition-shadow duration-200"
@@ -79,10 +79,12 @@ export default function ServicesPage() {
                   }}
                 >
                   <div
-                    className="w-16 h-16 rounded-xl flex items-center justify-center text-3xl flex-shrink-0"
-                    style={{ background: `${accent}18` }}
+                    className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${accent}18`, color: accent }}
                   >
-                    {icon}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d={svgPath} />
+                    </svg>
                   </div>
                   <div>
                     <span className={`${tagClass} mb-3 inline-block`}>{tag}</span>
