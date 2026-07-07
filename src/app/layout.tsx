@@ -25,6 +25,8 @@ const sourceCode = Source_Code_Pro({
   display: "swap",
 });
 
+import { LanguageProvider } from "@/lib/context/LanguageContext";
+
 export const metadata: Metadata = {
   title: {
     template: "%s | SkyAxes — オフショア開発パートナー",
@@ -51,9 +53,11 @@ export default function RootLayout({
       className={`${notoSansJP.variable} ${plusJakarta.variable} ${sourceCode.variable}`}
     >
       <body className="antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

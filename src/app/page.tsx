@@ -1,112 +1,21 @@
+"use client";
+
 import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
-import { seo } from "@/lib/data/seo-content";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { t } from "@/lib/data/language";
 
-export const metadata: Metadata = seo.home;
-
-/* ─── Data ─────────────────────────────────────────────────── */
-
-const services = [
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="14" cy="14" r="13" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M9 14h10M14 9v10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        <circle cx="14" cy="14" r="3" fill="currentColor" />
-      </svg>
-    ),
-    titleEN: "Offshore Development",
-    titleJP: "オフショア開発",
-    desc: "Japan-side PM manages requirements, design, offshore team communication, and QA end-to-end — at a realistic development cost.",
-    href: "/services/offshore",
-    accentColor: "var(--color-accent)",
-    accentBg: "rgba(46,117,182,0.10)",
-    hoverClass: "service-card-accent",
-    tag: "Main service",
-  },
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="3" y="3" width="22" height="22" rx="4" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M8 20l4-8 4 6 2-3 3 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    titleEN: "3D / VR / AR Development",
-    titleJP: "3D・VR・AR開発",
-    desc: "Advanced 3D visualization, VR/AR applications, and image processing — from dental/medical-adjacent software to industrial training.",
-    href: "/services/3dvrar",
-    accentColor: "var(--color-clinical)",
-    accentBg: "rgba(74,144,196,0.10)",
-    hoverClass: "service-card-clinical",
-    tag: "Specialized",
-  },
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="4" y="12" width="6" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
-        <rect x="11" y="7" width="6" height="17" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
-        <rect x="18" y="4" width="6" height="20" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
-      </svg>
-    ),
-    titleEN: "IoT / Manufacturing Systems",
-    titleJP: "IoT・製造システム",
-    desc: "QC systems, sensor data pipelines, factory management software. Real-world LineQC deployment running in production.",
-    href: "/services/iot",
-    accentColor: "var(--color-green-iot)",
-    accentBg: "rgba(13,143,111,0.10)",
-    hoverClass: "service-card-iot",
-    tag: "In production",
-  },
-];
-
-const flowSteps = [
-  { num: "01", jp: "ヒアリング", en: "Consultation" },
-  { num: "02", jp: "要件定義", en: "Requirements" },
-  { num: "03", jp: "見積もり", en: "Estimate" },
-  { num: "04", jp: "開発", en: "Development" },
-  { num: "05", jp: "品質確認", en: "QA" },
-  { num: "06", jp: "運用・保守", en: "Maintenance" },
-];
-
-const proofItems = [
-  {
-    tag: "Manufacturing / IoT",
-    tagColor: "var(--color-green-iot)",
-    tagBg: "var(--color-green-light)",
-    title: "LineQC — Manufacturing Line Quality Control",
-    titleJP: "製造ライン品質管理システム",
-    desc: "Real-time sensor data collection, line visualization, and automated QC for manufacturing floors. Running in production — proof of SkyAxes factory-system capability.",
-    metric: "Real-time",
-    metricLabel: "QC monitoring",
-    metricColor: "var(--color-green-iot)",
-    href: "/lineqc",
-    cta: "View LineQC →",
-    imgSrc: "/images/services-iot.jpg",
-    imgAlt: "LineQC manufacturing line quality control system dashboard",
-  },
-  {
-    tag: "AR Training",
-    tagColor: "var(--color-accent)",
-    tagBg: "rgba(46,117,182,0.10)",
-    title: "AR-based Industrial Training",
-    titleJP: "AR産業トレーニングシステム",
-    desc: "Augmented reality overlays guide technicians through complex assembly and maintenance procedures — reducing onboarding time and human error on the factory floor.",
-    metric: "AR-guided",
-    metricLabel: "Step-by-step training",
-    metricColor: "var(--color-accent)",
-    href: "/services/3dvrar",
-    cta: "View 3D/VR/AR Services →",
-    imgSrc: "/images/dental-screenshots.jpg",
-    imgAlt: "AR industrial training system overlaying assembly instructions",
-  },
-];
+import { services, proofItems } from "@/lib/data/data";
 
 /* ─── Page ──────────────────────────────────────────────────── */
 
 export default function HomePage() {
+  const { lang } = useLanguage();
+  const th = t.home;
+
   return (
     <>
       {/* ════════════════════════════════
@@ -122,31 +31,29 @@ export default function HomePage() {
             {/* ── Left copy ── */}
             <div className="hero-copy">
               <p className="hero-eyebrow">
-                Offshore Development Partner&nbsp;/&nbsp;オフショア開発パートナー
+                {th.hero.eyebrow[lang]}
               </p>
 
               <h1 className="hero-headline">
-                Japan-side PM-led
+                {th.hero.headline.part1[lang]}
                 <br />
-                Offshore Development
+                {th.hero.headline.part2[lang]}
                 <br />
                 <span className="hero-headline-accent">
-                  for 3D/VR, IoT &amp; Business Systems
+                  {th.hero.headline.accent[lang]}
                 </span>
               </h1>
 
               <p className="hero-sub">
-                We help manufacturing, dental/medical-adjacent and technical
-                businesses turn specialized software ideas into practical
-                systems at a realistic development cost.
+                {th.hero.sub[lang]}
               </p>
 
               <div className="hero-ctas">
                 <Link href="/contact" className="btn-primary hero-btn-primary" id="hero-cta-consult">
-                  Discuss an Offshore Development Project
+                  {th.hero.ctaPrimary[lang]}
                 </Link>
                 <Link href="/case-studies" className="btn-outline hero-btn-secondary" id="hero-cta-cases">
-                  View 3D/VR Case Studies
+                  {th.hero.ctaSecondary[lang]}
                 </Link>
               </div>
 
@@ -154,15 +61,15 @@ export default function HomePage() {
               <div className="hero-badges">
                 <span className="hero-badge">
                   <span className="hero-badge-dot" style={{ background: "var(--color-green-iot)" }} />
-                  Japan-side PM
+                  {th.hero.badgePm[lang]}
                 </span>
                 <span className="hero-badge">
                   <span className="hero-badge-dot" style={{ background: "var(--color-accent)" }} />
-                  Realistic cost
+                  {th.hero.badgeCost[lang]}
                 </span>
                 <span className="hero-badge">
                   <span className="hero-badge-dot" style={{ background: "var(--color-clinical)" }} />
-                  Technical QA
+                  {th.hero.badgeQa[lang]}
                 </span>
               </div>
             </div>
@@ -191,12 +98,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════════════════════════════════
-          TRUSTED BRANDS
-      ════════════════════════════════ */}
-      <section className="trust-belt" aria-label="信頼いただいている企業 / Trusted by">
+      <section className="trust-belt" aria-label="Trusted by">
         <div className="container-site">
-          <p className="trust-belt-label">信頼いただいている企業 / TRUSTED BY</p>
+          <p className="trust-belt-label">TRUSTED BY</p>
           <div className="trust-belt-row">
             {[
               { name: "Travancore Analytics", src: "https://www.skyaxes.jp/wp-content/uploads/2020/06/travancore-analytics_logo.png" },
@@ -233,17 +137,17 @@ export default function HomePage() {
         <FadeInSection>
           <div className="container-site">
             <div className="section-header">
-              <p className="section-eyebrow">What we build</p>
+              <p className="section-eyebrow">{th.servicesSection.eyebrow[lang]}</p>
               <h2 id="services-heading" className="section-title">
-                Our Services
+                {th.servicesSection.title[lang]}
               </h2>
               <p className="section-sub">
-                Three focused disciplines — all managed Japan-side, delivered offshore.
+                {th.servicesSection.sub[lang]}
               </p>
             </div>
 
             <div className="services-grid">
-              {services.map(({ icon, titleEN, titleJP, desc, href, accentColor, accentBg, hoverClass, tag }) => (
+              {services.map(({ icon, titleEN, titleJP, descEN, descJP, href, accentColor, accentBg, hoverClass, tag }) => (
                 <Link
                   key={href}
                   href={href}
@@ -264,14 +168,17 @@ export default function HomePage() {
                       {tag}
                     </span>
                   </div>
-                  <h3 className="service-title-en">{titleEN}</h3>
-                  <p className="service-title-jp">{titleJP}</p>
-                  <p className="service-desc">{desc}</p>
+                  <h3 className="service-title-en" style={{ fontFamily: lang === "JP" ? "var(--font-noto)" : "var(--font-jakarta)" }}>
+                    {lang === "JP" ? titleJP : titleEN}
+                  </h3>
+                  <p className="service-desc">
+                    {lang === "JP" ? descJP : descEN}
+                  </p>
                   <p
                     className="service-link"
                     style={{ color: accentColor }}
                   >
-                    Learn more →
+                    {th.servicesSection.learnMore[lang]}
                   </p>
                 </Link>
               ))}
@@ -281,7 +188,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════
-          FEATURED CASE STUDY — Dental 3D Viewer
+          FEATURED CASE STUDY — Dental 3D
       ════════════════════════════════ */}
       <section
         className="section-white"
@@ -291,10 +198,13 @@ export default function HomePage() {
         <FadeInSection>
           <div className="container-site">
             <div className="section-header">
-              <p className="section-eyebrow">Featured case study</p>
+              <p className="section-eyebrow">{th.caseStudiesSection.eyebrow[lang]}</p>
               <h2 id="case-study-heading" className="section-title">
-                Dental 3D Viewer Development
+                {th.caseStudiesSection.title[lang]}
               </h2>
+              <p className="section-sub">
+                {th.caseStudiesSection.sub[lang]}
+              </p>
             </div>
 
             <div className="case-study-card">
@@ -308,7 +218,7 @@ export default function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="case-study-img-overlay">
-                  <span className="tag-clinical">Healthcare / 医療</span>
+                  <span className="tag-clinical">Healthcare</span>
                 </div>
               </div>
 
@@ -317,15 +227,11 @@ export default function HomePage() {
                 <div className="case-accent-bar" style={{ background: "var(--color-clinical)" }} />
 
                 <h3 className="case-title">
-                  歯科用3Dビューア
-                  <br />
-                  <span className="case-title-en">Dental 3D Viewer</span>
+                  {th.caseStudiesSection.dentalTitle[lang]}
                 </h3>
 
                 <p className="case-desc">
-                  Real-time 3D scan data visualization for dental clinics.
-                  Delivered as a Windows application using Qt and OpenGL — built
-                  for usability, extensibility and practical implementation cost.
+                  {th.caseStudiesSection.dentalDesc[lang]}
                 </p>
 
                 <div className="case-metrics">
@@ -364,7 +270,7 @@ export default function HomePage() {
                     className="btn-primary"
                     id="case-study-cta-dental"
                   >
-                    View case study →
+                    {th.caseStudiesSection.viewCase[lang]}
                   </Link>
                   <Link
                     href="/case-studies"
@@ -419,9 +325,16 @@ export default function HomePage() {
                     >
                       {item.tag}
                     </span>
-                    <h3 className="proof-title">{item.title}</h3>
-                    <p className="proof-title-jp">{item.titleJP}</p>
-                    <p className="proof-desc">{item.desc}</p>
+                    <h3 className="proof-title">
+                      {lang === "JP" ? item.titleJP : item.title}
+                    </h3>
+                    <p className="proof-desc">
+                      {lang === "JP"
+                        ? (item.href === "/lineqc"
+                          ? "製造現場のラインデータをリアルタイムで収集・可視化。品質管理の自動化と不良品の早期検出を実現する実稼働システム。"
+                          : "組み立てラインや保守点検作業において、ARで手順をオーバーレイ表示。誤作業の防止と技術教育の効率化を実現。")
+                        : item.desc}
+                    </p>
                     <div
                       className="proof-metric-chip"
                       style={{ borderColor: item.metricColor + "33", background: item.metricColor + "0d" }}
@@ -436,7 +349,9 @@ export default function HomePage() {
                       className="proof-cta"
                       style={{ color: item.tagColor }}
                     >
-                      {item.cta}
+                      {lang === "JP"
+                        ? (item.href === "/lineqc" ? "LineQCの詳細を見る →" : "3D/VR/ARサービスを見る →")
+                        : item.cta}
                     </Link>
                   </div>
                 </div>
@@ -457,27 +372,28 @@ export default function HomePage() {
         <FadeInSection>
           <div className="container-site">
             <div className="section-header">
-              <p className="section-eyebrow">How we work</p>
+              <p className="section-eyebrow">{th.flowSection.eyebrow[lang]}</p>
               <h2 id="flow-heading" className="section-title">
-                Development Process
+                {th.flowSection.title[lang]}
               </h2>
               <p className="section-sub">
-                From first consultation to long-term operation — Japan-side PM guides every stage.
+                {th.flowSection.sub[lang]}
               </p>
             </div>
 
             <div className="flow-grid">
-              {flowSteps.map(({ num, jp, en }, i) => (
+              {th.flowSection.steps.map(({ num, JP, EN }, i) => (
                 <div key={num} className="flow-step">
                   {/* connector line */}
-                  {i < flowSteps.length - 1 && (
+                  {i < th.flowSection.steps.length - 1 && (
                     <div className="flow-connector" aria-hidden="true" />
                   )}
                   <div className="flow-circle">
                     <span>{num}</span>
                   </div>
-                  <p className="flow-label-jp">{jp}</p>
-                  <p className="flow-label-en">{en}</p>
+                  <p className="flow-label-jp" style={{ fontFamily: "var(--font-noto)" }}>
+                    {lang === "JP" ? JP : EN}
+                  </p>
                 </div>
               ))}
             </div>
@@ -489,7 +405,9 @@ export default function HomePage() {
                 <path d="M9 8v5M9 6v.5" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
               <span>
-                A Japan-side PM owns communication, specification, and QA throughout — not just during kickoff.
+                {lang === "JP"
+                  ? "キックオフ時だけでなく、要件定義・仕様作成・テスト・検収サポートの全工程で日本側のPMが責任を持って管理します。"
+                  : "A Japan-side PM owns communication, specification, and QA throughout — not just during kickoff."}
               </span>
             </div>
           </div>
@@ -506,14 +424,18 @@ export default function HomePage() {
       >
         <FadeInSection>
           <div className="container-site cta-inner">
-            <p className="cta-eyebrow">Get in touch</p>
+            <p className="cta-eyebrow">{lang === "JP" ? "お問い合わせ" : "Get in touch"}</p>
             <h2 id="cta-heading" className="cta-heading">
-              Discuss an Offshore
-              <br />
-              Development Project
+              {lang === "JP" ? (
+                <>オフショア開発の<br />ご相談はこちら</>
+              ) : (
+                <>Discuss an Offshore<br />Development Project</>
+              )}
             </h2>
             <p className="cta-sub">
-              We respond to qualified project inquiries within 2 business days.
+              {lang === "JP"
+                ? "開発要件がお決まりのプロジェクトについて、2営業日以内にご返信いたします。"
+                : "We respond to qualified project inquiries within 2 business days."}
             </p>
 
             {/* Anti-sales notice */}
@@ -523,9 +445,17 @@ export default function HomePage() {
                 <path d="M8 5v4M8 11v.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
               </svg>
               <span>
-                <strong>Development consultations only.</strong> This form is for system, offshore,
-                3D/VR/AR and IoT development inquiries. Sales pitches, recruiting, advertising,
-                SEO offers and web-production proposals will not receive a reply.
+                {lang === "JP" ? (
+                  <>
+                    <strong>開発案件の相談専用窓口です。</strong> 本フォームはシステム開発、オフショア開発、3D/VR/AR、IoT開発の相談のみを受け付けています。営業、紹介、勧誘、広告掲載、Web制作アライアンス等の提案には返信いたしません。
+                  </>
+                ) : (
+                  <>
+                    <strong>Development consultations only.</strong> This form is for system, offshore,
+                    3D/VR/AR and IoT development inquiries. Sales pitches, recruiting, advertising,
+                    SEO offers and web-production proposals will not receive a reply.
+                  </>
+                )}
               </span>
             </div>
 
@@ -535,14 +465,14 @@ export default function HomePage() {
                 className="cta-btn-primary"
                 id="final-cta-contact"
               >
-                Start a Consultation →
+                {lang === "JP" ? "ご相談フォームへ →" : "Start a Consultation →"}
               </Link>
               <Link
                 href="/services/offshore"
                 className="cta-btn-ghost"
                 id="final-cta-services"
               >
-                Learn about Offshore Development
+                {lang === "JP" ? "オフショア開発サービスについて" : "Learn about Offshore Development"}
               </Link>
             </div>
           </div>

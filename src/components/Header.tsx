@@ -5,6 +5,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 
+import { useLanguage } from "@/lib/context/LanguageContext";
+
 const navLinks = [
   { href: "/services", labelJP: "サービス", labelEN: "Services" },
   { href: "/case-studies", labelJP: "事例", labelEN: "Case Studies" },
@@ -16,7 +18,7 @@ export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [lang, setLang] = useState<"JP" | "EN">("JP");
+  const { lang, setLang } = useLanguage();
 
   useEffect(() => {
     const sentinel = document.getElementById("header-scroll-sentinel");
@@ -229,17 +231,7 @@ export default function Header() {
                   fontWeight: 500,
                 }}
               >
-                {labelJP}
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-jakarta)",
-                  fontSize: 13,
-                  color: "var(--color-muted)",
-                  marginTop: 2,
-                }}
-              >
-                {labelEN}
+                {lang === "JP" ? labelJP : labelEN}
               </span>
             </Link>
           ))}
