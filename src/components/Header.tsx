@@ -200,11 +200,11 @@ export default function Header() {
         aria-label="ナビゲーションメニュー"
         className="lg:hidden fixed inset-0 bg-white flex flex-col transition-all duration-200 ease-out"
         style={{
-          zIndex: 999,
+          zIndex: 48,
           transform: menuOpen ? "translateY(0)" : "translateY(-100%)",
           opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? "auto" : "none",
-          paddingTop: 64,
+          paddingTop: 88,
         }}
       >
         {/* Nav links */}

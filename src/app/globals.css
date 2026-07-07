@@ -1706,22 +1706,17 @@ body {
   filter: grayscale(0%);
 }
 
-/* Mobile: horizontal scroll */
+/* Mobile: wrap logos so they are all fully visible in a neat grid */
 @media (max-width: 767px) {
   .trust-belt-row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    margin-inline: -4px;
-    padding-inline: 4px;
   }
-  .trust-belt-row::-webkit-scrollbar { display: none; }
   .trust-logo {
     flex-shrink: 0;
     flex: none;
-    min-width: 120px;
+    width: calc(50% - 6px); /* 2 items per row */
+    min-width: unset;
   }
 }
