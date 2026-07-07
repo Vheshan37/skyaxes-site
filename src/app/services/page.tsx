@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "サービス / Services",
-  description:
-    "SkyAxesのサービス — オフショア開発、3D/VR/AR開発、IoT・製造システム開発。日本人PMによる高品質な受託開発。",
-};
+export const metadata: Metadata = seo.services;
 
 const services = [
   {

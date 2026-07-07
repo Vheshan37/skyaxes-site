@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "3D・VR・AR開発 / 3D VR AR Development",
-  description:
-    "歯科用3Dビューア開発実績。Qt/OpenGLによる3D可視化、VR/ARアプリケーション受託開発。SkyAxesの3D技術力をご紹介。",
-};
+export const metadata: Metadata = seo.threeDVRAR;
 
 const capabilities = [
   {

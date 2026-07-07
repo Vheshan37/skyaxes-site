@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "導入事例 / Case Studies",
-  description: "SkyAxesの開発実績。歯科用3Dビューア・LineQC・AR研修など、3D/VR・IoT・業務システム領域の事例一覧。",
-};
+export const metadata: Metadata = seo.caseStudies;
 
 const cases = [
   {

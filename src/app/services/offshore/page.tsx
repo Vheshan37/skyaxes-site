@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "オフショア開発サービス / Offshore Development",
-  description:
-    "日本人PMによるオフショア開発。要件定義・設計・品質管理を日本側で一括対応。製造・歯科医療・業務システム領域に強み。",
-};
+export const metadata: Metadata = seo.offshore;
 
 const strengths = [
   {

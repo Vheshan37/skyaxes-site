@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "お問い合わせ / Contact Us",
-  description:
-    "SkyAxesへの開発相談・お問い合わせ。2営業日以内にご返信いたします。逆営業・広告掲載目的のお問い合わせにはご対応しておりません。",
-};
+export const metadata: Metadata = seo.contact;
 
 export default function ContactPage() {
   return (

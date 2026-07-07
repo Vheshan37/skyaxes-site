@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "IoT・製造システム開発 / IoT Manufacturing Systems",
-  description: "IoTセンサーデータ収集・品質管理・工場管理システムの設計・開発。LineQCを通じた製造業向け実績多数。",
-};
+export const metadata: Metadata = seo.iot;
 
 const features = [
   {

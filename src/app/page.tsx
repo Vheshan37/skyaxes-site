@@ -1,13 +1,11 @@
+import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "SkyAxes — Japan-side PM-led Offshore Development",
-  description:
-    "We help manufacturing, dental/medical-adjacent and technical businesses turn specialized software ideas into practical systems at a realistic development cost.",
-};
+export const metadata: Metadata = seo.home;
 
 /* ─── Data ─────────────────────────────────────────────────── */
 
@@ -189,6 +187,29 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════
+          TRUSTED BRANDS
+      ════════════════════════════════ */}
+      <section className="trust-belt" aria-label="信頼いただいている企業 / Trusted by">
+        <div className="container-site">
+          <p className="trust-belt-label">信頼いただいている企業 / TRUSTED BY</p>
+          <div className="trust-belt-row">
+            {[
+              { name: "OPExPARK",         abbr: "OPE",  color: "#2E75B6" },
+              { name: "Uhuru Corp.",       abbr: "UHU",  color: "#0D8F6F" },
+              { name: "SORACOM",           abbr: "SOR",  color: "#1A3C6E" },
+              { name: "Preferred Networks",abbr: "PFN",  color: "#4A90C4" },
+              { name: "eSolia",            abbr: "ESO",  color: "#2E75B6" },
+            ].map(({ name, abbr, color }) => (
+              <div key={name} className="trust-logo" style={{ "--logo-color": color } as React.CSSProperties}>
+                <span className="trust-logo-mark" aria-hidden="true">{abbr}</span>
+                <span className="trust-logo-name">{name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

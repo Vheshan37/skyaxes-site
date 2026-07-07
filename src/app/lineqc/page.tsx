@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "LineQC — Manufacturing Line Quality Control System | SkyAxes",
-  description:
-    "LineQC is a quality control system by SkyAxes that systematizes manufacturing rules for zero in-process defects. Proof of SkyAxes manufacturing-system development capability.",
-};
+export const metadata: Metadata = seo.lineqc;
 
 const mainFunctions = [
   {

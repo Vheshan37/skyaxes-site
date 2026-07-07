@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "歯科用3Dビューア導入事例 / Dental 3D Viewer Case Study",
-  description:
-    "歯科診療向けリアルタイム3Dビューア開発事例。Qt/OpenGLによる50ms以下の低レイテンシ描画を実現。SkyAxesのフラッグシップ実績。",
-};
+export const metadata: Metadata = seo.dental3dViewer;
 
 const quadrants = [
   {

@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import { seo } from "@/lib/data/seo-content";
 
-export const metadata: Metadata = {
-  title: "会社概要 / Company",
-  description:
-    "SkyAxes株式会社の会社概要。日本人PMが主導するオフショア開発会社。設立情報・事業内容・対応言語・所在地のご案内。",
-};
+export const metadata: Metadata = seo.company;
 
 const companyInfo = [
   { label: "会社名", labelEN: "Company Name", value: "SkyAxes株式会社 / SkyAxes Co., Ltd." },
