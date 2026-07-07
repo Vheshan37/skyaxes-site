@@ -1,0 +1,333 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   SkyAxes Design System — Tailwind v4 Theme
+   ───────────────────────────────────────────── */
+@theme inline {
+  /* Brand colours */
+  --color-navy:          #1A3C6E;
+  --color-navy-dark:     #122b52;
+  --color-navy-light:    #2a5298;
+  --color-accent:        #2E75B6;
+  --color-accent-hover:  #255e92;
+  --color-surface:       #F0F5FA;
+  --color-surface-dark:  #e0eaf5;
+  --color-green-iot:     #0D8F6F;
+  --color-green-light:   #e6f7f3;
+  --color-clinical:      #4A90C4;
+  --color-clinical-light:#EBF4FB;
+  --color-text:          #2D2D2D;
+  --color-muted:         #6B7280;
+  --color-border:        #E5E9EF;
+  --color-border-dark:   #D1D9E2;
+  --color-warning-red:   #B3261E;
+  --color-warning-bg:    #FBEAEA;
+
+  /* Typography */
+  --font-noto:    var(--font-noto-sans-jp), "Noto Sans JP", sans-serif;
+  --font-jakarta: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-code:    var(--font-source-code), "Source Code Pro", monospace;
+
+  /* Radii */
+  --radius-card: 8px;
+  --radius-btn:  4px;
+  --radius-tag:  9999px;
+
+  /* Shadows */
+  --shadow-card:   0 1px 4px rgba(26,60,110,0.08), 0 4px 16px rgba(26,60,110,0.06);
+  --shadow-header: 0 1px 3px rgba(26,60,110,0.06);
+
+  /* Container */
+  --container-site: 1280px;
+}
+
+/* ── Global resets ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-text);
+  font-family: var(--font-noto);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── No dark mode (brand requirement) ── */
+@media (prefers-color-scheme: dark) {
+  body { background: #ffffff; color: var(--color-text); }
+}
+
+/* ── Container ── */
+.container-site {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: 32px;
+}
+@media (max-width: 768px) {
+  .container-site { padding-inline: 20px; }
+}
+@media (max-width: 375px) {
+  .container-site { padding-inline: 16px; }
+}
+
+/* ── Section rhythm ── */
+.section-white   { background: #ffffff; }
+.section-surface { background: var(--color-surface); }
+
+/* ── Bilingual label pair ── */
+.bilingual-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bilingual-label .label-jp {
+  font-family: var(--font-noto);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+.bilingual-label .label-en {
+  font-family: var(--font-jakarta);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* ── Tag pills ── */
+.tag-clinical {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-clinical-light);
+  color: var(--color-clinical);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: var(--radius-tag);
+  font-family: var(--font-noto);
+}
+.tag-iot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-green-light);
+  color: var(--color-green-iot);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: var(--radius-tag);
+}
+.tag-navy {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(26,60,110,0.08);
+  color: var(--color-navy);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: var(--radius-tag);
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-family: var(--font-noto);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled,
+.btn-primary[aria-disabled="true"] {
+  background: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--color-accent);
+  font-family: var(--font-noto);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 11px 24px;
+  border-radius: var(--radius-btn);
+  border: 1.5px solid var(--color-accent);
+  cursor: pointer;
+  transition: all 150ms ease;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+/* ── Scroll fade-in ── */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Divider line ── */
+.quad-divider {
+  border-color: var(--color-border);
+}
+
+/* ── Form field styles ── */
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border-dark);
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: var(--font-noto);
+  color: var(--color-text);
+  background: #ffffff;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  outline: none;
+}
+.form-field textarea {
+  height: auto;
+  min-height: 140px;
+  padding: 12px;
+  resize: vertical;
+}
+.form-field select { cursor: pointer; appearance: none; }
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(46,117,182,0.15);
+}
+.form-field input:user-invalid,
+.form-field select:user-invalid,
+.form-field textarea:user-invalid {
+  border-color: var(--color-warning-red);
+  box-shadow: 0 0 0 2px rgba(179,38,30,0.10);
+}
+
+/* ── Hover-only CSS effects (replaces JS event handlers in Server Components) ── */
+
+/* Trust ribbon logos */
+.trust-logo {
+  filter: grayscale(100%) opacity(0.45);
+  transition: filter 200ms ease;
+}
+.trust-logo:hover { filter: grayscale(0%) opacity(1); }
+
+/* Service + case study cards */
+.card-hover {
+  transition: box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+}
+.card-hover:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+/* Case study card hover (accent border) */
+.case-card-hover {
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.case-card-hover:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+/* Footer links */
+.footer-link {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.footer-link:hover { color: #ffffff; }
+
+/* Service card accent-border on hover (done via group + CSS vars) */
+.service-card {
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  border-radius: var(--radius-card);
+  transition: box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease;
+  text-decoration: none;
+  display: block;
+  padding: 32px;
+}
+.service-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+.service-card-accent:hover  { border-color: var(--color-accent); }
+.service-card-clinical:hover { border-color: var(--color-clinical); }
+.service-card-iot:hover     { border-color: var(--color-green-iot); }
+
+/* ── Mobile scroll snap trust ribbon ── */
+.trust-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 40px;
+  padding-block: 8px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.trust-scroll::-webkit-scrollbar { display: none; }
+.trust-scroll > * { scroll-snap-align: center; flex-shrink: 0; }
+
+/* ── Trust ribbon fade mask ── */
+.trust-fade-wrap {
+  position: relative;
+}
+.trust-fade-wrap::before,
+.trust-fade-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 40px;
+  z-index: 1;
+  pointer-events: none;
+}
+.trust-fade-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-surface), transparent);
+}
+.trust-fade-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-surface), transparent);
+}
