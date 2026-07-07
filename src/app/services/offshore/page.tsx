@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
-import { seo } from "@/lib/data/seo-content";
-
-export const metadata: Metadata = seo.offshore;
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { t } from "@/lib/data/language";
 
 const strengths = [
   {
@@ -32,46 +32,119 @@ const strengths = [
   },
 ];
 
-const faq = [
-  {
-    q: "オフショア開発の最小プロジェクト規模はどれくらいですか？",
-    a: "おおよそ300万円以上のプロジェクトを対象としています。規模や要件によりご相談ください。",
-  },
-  {
-    q: "コミュニケーションはどのように行いますか？",
-    a: "クライアント様とのやり取りは日本語で行います。オフショアチームへの英語・現地語対応は弊社が担います。",
-  },
-  {
-    q: "どのような技術スタックに対応していますか？",
-    a: "Webアプリケーション、Windowsデスクトップ（Qt/C++等）、IoT、3D/VR/ARなど幅広く対応可能です。",
-  },
-  {
-    q: "「安いオフショア」とは何が違いますか？",
-    a: "価格競争ではなく、日本側PMによる要件管理とコミュニケーション品質を強みとしています。開発費はリーズナブルですが、最安値ではありません。",
-  },
-];
-
 export default function OffshorePage() {
+  const { lang } = useLanguage();
+
+  const faq = [
+    {
+      q: lang === "JP"
+        ? "オフショア開発の最小プロジェクト規模はどれくらいですか？"
+        : "Minimum project size?",
+      a: lang === "JP"
+        ? "おおよそ300万円以上のプロジェクトを対象としています。規模や要件によりご相談ください。"
+        : "Projects of ~¥3M+ (~$20K+). Contact us.",
+    },
+    {
+      q: lang === "JP"
+        ? "コミュニケーションはどのように行いますか？"
+        : "How does communication work?",
+      a: lang === "JP"
+        ? "クライアント様とのやり取りは日本語で行います。オフショアチームへの英語・現地語対応は弊社が担います。"
+        : "Client communication in Japanese. We handle offshore coordination.",
+    },
+    {
+      q: lang === "JP"
+        ? "どのような技術スタックに対応していますか？"
+        : "Supported tech stacks?",
+      a: lang === "JP"
+        ? "Webアプリケーション、Windowsデスクトップ（Qt/C++等）、IoT、3D/VR/ARなど幅広く対応可能です。"
+        : "Web, Windows (Qt/C++), IoT, 3D/VR/AR, and more.",
+    },
+    {
+      q: lang === "JP"
+        ? "「安いオフショア」とは何が違いますか？"
+        : "Different from cheap offshore?",
+      a: lang === "JP"
+        ? "価格競争ではなく、日本側PMによる要件管理とコミュニケーション品質を強みとしています。開発費はリーズナブルですが、最安値ではありません。"
+        : "We compete on quality. Japan-side PM manages requirements.",
+    },
+  ];
+
+  const deliveryModel = [
+    {
+      label: lang === "JP" ? "クライアント" : "Client",
+      sub: "You",
+      arrow: false,
+      highlight: false,
+    },
+    {
+      label: lang === "JP" ? "↕ 日本語コミュニケーション" : "↕ Japanese Communication",
+      sub: "",
+      arrow: true,
+      highlight: false,
+    },
+    {
+      label: "SkyAxes Japan PM",
+      sub: "Requirements · Design · QA",
+      arrow: false,
+      highlight: true,
+    },
+    {
+      label: lang === "JP" ? "↕ 英語・現地語管理" : "↕ English / Local Language",
+      sub: "",
+      arrow: true,
+      highlight: false,
+    },
+    {
+      label: lang === "JP" ? "オフショア開発チーム" : "Offshore Dev Team",
+      sub: lang === "JP" ? "Offshore Dev Team" : "",
+      arrow: false,
+      highlight: false,
+    },
+  ];
+
+  const bullets = lang === "JP"
+    ? [
+        "製造業・医療機器メーカーで独自ソフトウェアが必要",
+        "開発コストを抑えたいが品質は妥協できない",
+        "社内にエンジニアがいないが、要件はある",
+        "過去にオフショア開発で失敗した経験がある",
+        "日本語でPMとコミュニケーションしたい",
+      ]
+    : [
+        "Need custom software for manufacturing/medical",
+        "Reduce costs without compromising quality",
+        "Have requirements but no in-house engineers",
+        "Had past offshore failures",
+        "Want to communicate with PM in Japanese",
+      ];
+
   return (
     <>
       {/* Hero */}
       <section className="section-surface" style={{ paddingBlock: 72 }}>
         <div className="container-site">
-          <span className="tag-navy mb-5 inline-block">オフショア開発</span>
+          <span className="tag-navy mb-5 inline-block">
+            {lang === "JP" ? "オフショア開発" : "Offshore Development"}
+          </span>
           <h1
             className="font-bold mb-4"
             style={{ fontSize: "clamp(24px, 4vw, 40px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)", lineHeight: 1.4 }}
-          >
-            日本人PMが導く<br />オフショア開発サービス
-          </h1>
+            dangerouslySetInnerHTML={{
+              __html: lang === "JP"
+                ? "日本人PMが導く<br/>オフショア開発サービス"
+                : "Japan-side PM-led<br/>Offshore Development",
+            }}
+          />
           <p
             className="mb-8"
             style={{ fontSize: 16, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)", maxWidth: 560, lineHeight: 1.75 }}
           >
-            Japan-side PM-led offshore development partner — Japan-side PM manages requirements,
-            design, and quality while offshore teams focus on execution.
+            {t.offshore.hero.sub[lang]}
           </p>
-          <Link href="/contact" className="btn-primary">開発についてご相談する</Link>
+          <Link href="/contact" className="btn-primary">
+            {lang === "JP" ? "開発についてご相談する" : "Discuss Your Project"}
+          </Link>
         </div>
       </section>
 
@@ -84,16 +157,10 @@ export default function OffshorePage() {
                 className="font-bold mb-6"
                 style={{ fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
               >
-                こんな企業様へ
+                {lang === "JP" ? "こんな企業様へ" : "Who This Is For"}
               </h2>
               <ul className="space-y-4">
-                {[
-                  "製造業・医療機器メーカーで独自ソフトウェアが必要",
-                  "開発コストを抑えたいが品質は妥協できない",
-                  "社内にエンジニアがいないが、要件はある",
-                  "過去にオフショア開発で失敗した経験がある",
-                  "日本語でPMとコミュニケーションしたい",
-                ].map((item) => (
+                {bullets.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span
                       className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-white"
@@ -118,16 +185,10 @@ export default function OffshorePage() {
                 className="font-bold mb-6"
                 style={{ fontSize: 20, color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
               >
-                デリバリーモデル
+                {lang === "JP" ? "デリバリーモデル" : "Delivery Model"}
               </h3>
               <div className="space-y-4">
-                {[
-                  { label: "クライアント", sub: "You", arrow: false, highlight: false },
-                  { label: "↕ 日本語コミュニケーション", sub: "", arrow: true, highlight: false },
-                  { label: "SkyAxes Japan PM", sub: "Requirements · Design · QA", arrow: false, highlight: true },
-                  { label: "↕ 英語・現地語管理", sub: "", arrow: true, highlight: false },
-                  { label: "オフショア開発チーム", sub: "Offshore Dev Team", arrow: false, highlight: false },
-                ].map(({ label, sub, arrow, highlight }) => (
+                {deliveryModel.map(({ label, sub, arrow, highlight }) => (
                   <div
                     key={label}
                     className={`${arrow ? "text-center text-lg" : "p-4 rounded-lg"}`}
@@ -180,7 +241,7 @@ export default function OffshorePage() {
               className="font-bold mb-12 text-center"
               style={{ fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
             >
-              対応サービス範囲
+              {lang === "JP" ? "対応サービス範囲" : "Service Coverage"}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {strengths.map(({ svg, jp, en }) => (
@@ -196,10 +257,10 @@ export default function OffshorePage() {
                     {svg}
                   </div>
                   <p className="font-semibold text-sm mb-1" style={{ color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
-                    {jp}
+                    {lang === "JP" ? jp : en}
                   </p>
                   <p className="text-xs" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>
-                    {en}
+                    {lang === "JP" ? en : jp}
                   </p>
                 </div>
               ))}
@@ -216,7 +277,7 @@ export default function OffshorePage() {
               className="font-bold mb-10"
               style={{ fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
             >
-              よくある質問&nbsp;<span style={{ fontFamily: "var(--font-jakarta)", fontSize: 18, fontWeight: 400, color: "var(--color-muted)" }}>FAQ</span>
+              {lang === "JP" ? "よくある質問" : "FAQ"}&nbsp;<span style={{ fontFamily: "var(--font-jakarta)", fontSize: 18, fontWeight: 400, color: "var(--color-muted)" }}>{lang === "JP" ? "FAQ" : ""}</span>
             </h2>
             <div className="space-y-0">
               {faq.map(({ q, a }, i) => (
@@ -248,9 +309,11 @@ export default function OffshorePage() {
             className="font-bold mb-4"
             style={{ fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
           >
-            開発のご相談はこちら
+            {lang === "JP" ? "開発のご相談はこちら" : "Ready to Start?"}
           </h2>
-          <Link href="/contact" className="btn-primary">お問い合わせ</Link>
+          <Link href="/contact" className="btn-primary">
+            {lang === "JP" ? "お問い合わせ" : "Contact Us"}
+          </Link>
         </div>
       </section>
     </>

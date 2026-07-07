@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
-import { seo } from "@/lib/data/seo-content";
-
-export const metadata: Metadata = seo.iot;
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { t } from "@/lib/data/language";
 
 const features = [
   {
@@ -33,20 +33,23 @@ const features = [
 ];
 
 export default function IoTPage() {
+  const { lang } = useLanguage();
+
   return (
     <>
       <section className="section-surface" style={{ paddingBlock: 72 }}>
         <div className="container-site">
-          <span className="tag-iot mb-5 inline-block">IoT・製造</span>
+          <span className="tag-iot mb-5 inline-block">
+            {lang === "JP" ? "IoT・製造" : "IoT / Manufacturing"}
+          </span>
           <h1
             className="font-bold mb-4"
             style={{ fontSize: "clamp(24px, 4vw, 40px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)", lineHeight: 1.4 }}
           >
-            IoT・製造システム<br />開発サービス
+            {t.iot.hero.title[lang]}
           </h1>
           <p style={{ fontSize: 16, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)", maxWidth: 520, lineHeight: 1.75 }}>
-            Factory-floor IoT systems, quality control automation, and sensor data pipelines
-            — built with manufacturing-sector discipline.
+            {t.iot.hero.sub[lang]}
           </p>
         </div>
       </section>
@@ -59,7 +62,7 @@ export default function IoTPage() {
                 className="font-bold mb-6"
                 style={{ fontSize: "clamp(20px, 2.5vw, 26px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
               >
-                対応可能なシステム範囲
+                {lang === "JP" ? "対応可能なシステム範囲" : "System Coverage"}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {features.map(({ svg, jp, en }) => (
@@ -76,10 +79,10 @@ export default function IoTPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-sm" style={{ color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}>
-                        {jp}
+                        {lang === "JP" ? jp : en}
                       </p>
                       <p className="text-xs" style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}>
-                        {en}
+                        {lang === "JP" ? en : jp}
                       </p>
                     </div>
                   </div>
@@ -92,29 +95,34 @@ export default function IoTPage() {
                 className="font-bold mb-6"
                 style={{ fontSize: "clamp(20px, 2.5vw, 26px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
               >
-                実績：LineQC
+                {lang === "JP" ? "実績：LineQC" : "In Production: LineQC"}
               </h2>
               <div
                 className="p-8 rounded-xl mb-6"
                 style={{ border: "1px solid var(--color-border)", background: "#ffffff" }}
               >
-                <span className="tag-iot mb-4 inline-block">製品実績</span>
+                <span className="tag-iot mb-4 inline-block">
+                  {lang === "JP" ? "製品実績" : "Production System"}
+                </span>
                 <h3
                   className="font-bold mb-2"
                   style={{ fontSize: 18, color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
                 >
-                  LineQC — 製造ライン品質管理
+                  {lang === "JP"
+                    ? "LineQC — 製造ライン品質管理"
+                    : "LineQC — Manufacturing Line QC"}
                 </h3>
                 <p style={{ fontSize: 14, color: "var(--color-text)", lineHeight: 1.8, fontFamily: "var(--font-noto)" }}>
-                  製造現場のラインデータをリアルタイムで収集・可視化。
-                  品質管理の自動化と不良品の早期検出を実現する業務システムです。
+                  {lang === "JP"
+                    ? "製造現場のラインデータをリアルタイムで収集・可視化。品質管理の自動化と不良品の早期検出を実現する業務システムです。"
+                    : "Real-time line data collection and visualization. Automated QC and early defect detection."}
                 </p>
                 <Link
                   href="/lineqc"
                   className="inline-block mt-5 text-sm font-semibold"
                   style={{ color: "var(--color-green-iot)", fontFamily: "var(--font-jakarta)" }}
                 >
-                  LineQCの詳細を見る&nbsp;→
+                  {lang === "JP" ? "LineQCの詳細を見る\u00A0→" : "View LineQC\u00A0→"}
                 </Link>
               </div>
             </div>
@@ -128,10 +136,10 @@ export default function IoTPage() {
             className="font-bold mb-4"
             style={{ fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
           >
-            IoT・製造システムのご相談
+            {lang === "JP" ? "IoT・製造システムのご相談" : "Discuss IoT Systems"}
           </h2>
           <Link href="/contact" className="btn-primary" style={{ background: "var(--color-green-iot)" }}>
-            お問い合わせ
+            {lang === "JP" ? "お問い合わせ" : "Contact Us"}
           </Link>
         </div>
       </section>

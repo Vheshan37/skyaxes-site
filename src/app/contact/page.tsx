@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
-import ContactForm from "@/components/ContactForm";
-import { seo } from "@/lib/data/seo-content";
+"use client";
 
-export const metadata: Metadata = seo.contact;
+import ContactForm from "@/components/ContactForm";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { t } from "@/lib/data/language";
 
 export default function ContactPage() {
+  const { lang } = useLanguage();
+
   return (
     <>
       {/* Page header */}
@@ -14,16 +16,16 @@ export default function ContactPage() {
             className="text-xs font-semibold uppercase tracking-widest mb-4"
             style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)", letterSpacing: "0.08em" }}
           >
-            Contact
+            CONTACT
           </p>
           <h1
             className="font-bold mb-3"
             style={{ fontSize: "clamp(24px, 4vw, 40px)", color: "var(--color-navy)", fontFamily: "var(--font-noto)", lineHeight: 1.4 }}
           >
-            お問い合わせ
+            {t.contact.hero.title[lang]}
           </h1>
           <p style={{ fontSize: 15, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)", maxWidth: 480 }}>
-            Development consultations only. We respond within 2 business days.
+            {t.contact.hero.sub[lang]}
           </p>
         </div>
       </section>
@@ -56,7 +58,9 @@ export default function ContactPage() {
                   className="text-sm mb-4"
                   style={{ color: "var(--color-text)", fontFamily: "var(--font-noto)", lineHeight: 1.8 }}
                 >
-                  日本人PMが主導するオフショア開発会社。3D/VR、IoT、業務システム開発に特化しています。
+                  {lang === 'JP'
+                    ? '日本人PMが主導するオフショア開発会社。3D/VR、IoT、業務システム開発に特化しています。'
+                    : 'Japan-side PM-led offshore development company specializing in 3D/VR, IoT, and business systems.'}
                 </p>
 
                 <div className="space-y-3">
@@ -67,13 +71,13 @@ export default function ContactPage() {
                         className="text-xs font-semibold"
                         style={{ color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
                       >
-                        対応地域
+                        {lang === 'JP' ? '対応地域' : 'Service Area'}
                       </p>
                       <p
                         className="text-xs"
                         style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}
                       >
-                        日本全国・海外（英語対応可）
+                        {lang === 'JP' ? '日本全国・海外（英語対応可）' : 'Japan-wide & international'}
                       </p>
                     </div>
                   </div>
@@ -84,13 +88,13 @@ export default function ContactPage() {
                         className="text-xs font-semibold"
                         style={{ color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
                       >
-                        対応言語
+                        {lang === 'JP' ? '対応言語' : 'Languages'}
                       </p>
                       <p
                         className="text-xs"
                         style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}
                       >
-                        日本語・English
+                        {lang === 'JP' ? '日本語・English' : 'Japanese & English'}
                       </p>
                     </div>
                   </div>
@@ -116,13 +120,13 @@ export default function ContactPage() {
                     className="font-semibold"
                     style={{ fontSize: 15, color: "var(--color-accent)", fontFamily: "var(--font-noto)" }}
                   >
-                    2営業日以内にご返信いたします
+                    {lang === 'JP' ? '2営業日以内にご返信いたします' : 'We respond within 2 business days'}
                   </p>
                   <p
                     className="text-xs"
                     style={{ color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}
                   >
-                    We respond within 2 business days
+                    {lang === 'JP' ? 'We respond within 2 business days' : '2 business day response guarantee'}
                   </p>
                 </div>
               </div>
@@ -136,7 +140,7 @@ export default function ContactPage() {
                   className="font-semibold mb-3 text-sm"
                   style={{ color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
                 >
-                  所在地&nbsp;/&nbsp;Location
+                  {lang === 'JP' ? '所在地\u00a0/\u00a0Location' : 'Location'}
                 </p>
                 <a
                   href="https://maps.google.com/?q=Tokyo,Japan"
@@ -144,7 +148,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="block rounded-xl overflow-hidden border transition-opacity duration-150 hover:opacity-80"
                   style={{ border: "1px solid var(--color-border)" }}
-                  aria-label="地図を開く / Open map (Google Maps)"
+                  aria-label={lang === 'JP' ? '地図を開く / Open map (Google Maps)' : 'Open map (Google Maps)'}
                 >
                   {/* Static map placeholder */}
                   <div
@@ -178,7 +182,7 @@ export default function ContactPage() {
                         fontFamily: "var(--font-jakarta)",
                       }}
                     >
-                      地図を開く / Open map ↗
+                      {lang === 'JP' ? '地図を開く / Open map ↗' : 'Open Map ↗'}
                     </span>
                   </div>
                 </a>
