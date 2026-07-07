@@ -1581,3 +1581,63 @@ body {
   color: var(--color-muted);
   margin: 0;
 }
+
+/* ════════════════════════════════════════════════════════
+   LINEQC — Proof banner (top strip)
+════════════════════════════════════════════════════════ */
+.lqc-proof-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 0;
+  color: var(--color-green-iot);
+}
+.lqc-proof-banner-text {
+  font-family: var(--font-jakarta);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
+}
+.lqc-proof-banner-text strong {
+  color: var(--color-green-iot);
+}
+
+/* ════════════════════════════════════════════════════════
+   LINEQC — Mission statement
+════════════════════════════════════════════════════════ */
+.lqc-mission-wrap {
+  text-align: center;
+  max-width: 660px;
+  margin: 0 auto;
+}
+.lqc-mission-jp {
+  font-family: var(--font-noto);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 8px;
+}
+.lqc-mission-en {
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  color: var(--color-muted);
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+.lqc-mission-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 20px;
+  background: rgba(13,143,111,0.06);
+  border: 1px solid rgba(13,143,111,0.20);
+  border-radius: 8px;
+  text-align: left;
+}
+.lqc-mission-note {
+  font-family: var(--font-noto);
+  font-size: 13px;
+  color: var(--color-text);
+  line-height: 1.6;
+}
