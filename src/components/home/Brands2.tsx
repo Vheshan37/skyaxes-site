@@ -60,17 +60,6 @@ const partners = [
     },
     highlight: false,
   },
-  {
-    name: "Olivlab",
-    logo: "https://www.skyaxes.jp/wp-content/uploads/2020/06/omobio_logo.png", // Fallback standard partner logomark
-    location: { JP: "スリランカ・コロンボ", EN: "Colombo, Sri Lanka" },
-    tag: { JP: "ITコンサルティング & 調整", EN: "IT Consulting & Bridge" },
-    desc: {
-      JP: "スリランカ現地のIT企業。日本企業向けブリッジ開発、ITコンサルティング、および現地エンジニア組織との高度な連携調整を担います。",
-      EN: "IT consultancy in Sri Lanka providing bridging services, localized tech consulting, and cross-border project coordination.",
-    },
-    highlight: false,
-  },
 ];
 
 export default function Brands2() {
