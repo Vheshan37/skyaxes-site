@@ -245,6 +245,83 @@ export const t = {
       viewCase: { JP: "事例の詳細を見る →", EN: "View Case Study →" },
     },
   },
+
+  /* ─── Privacy Policy Page ────────────────────────── */
+  privacyPolicy: {
+    hero: {
+      title: { JP: "プライバシーポリシー", EN: "Privacy Policy" },
+      sub: {
+        JP: "当社の提供するサービスにおける、個人情報の取扱いについての基本方針をご説明します。",
+        EN: "Our fundamental guidelines regarding the collection, management, and use of personal information.",
+      },
+    },
+    intro: {
+      JP: "スカイアクシーズ株式会社（以下「当社」といいます）は、当社の提供するサービス（以下「本サービス」といいます）における、ユーザーについての個人情報を含む利用者情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます）を定めます。",
+      EN: "SkyAxes Co., Ltd. (hereinafter referred to as the 'Company') has established this Privacy Policy (hereinafter referred to as the 'Policy') regarding the handling of user information, including personal information, in the services provided by the Company (hereinafter referred to as the 'Service').",
+    },
+    sec1Title: { JP: "1. 収集する利用者情報及び収集方法", EN: "1. Collected Information and Methods" },
+    sec1Desc: {
+      JP: "本ポリシーにおいて、「利用者情報」とは、ユーザーの識別に係る情報、通信サービス上の行動履歴、その他ユーザーのスマートフォン、PC等の端末においてユーザー又はユーザーの端末に関連して生成又は蓄積された情報であって、本ポリシーに基づき当社が収集するものを意味するものとします。",
+      EN: "In this Policy, 'User Information' means information relating to user identification, communication service activity logs, and other information generated or stored in connection with the user or their terminal on smartphones, PCs, etc., which the Company collects based on this Policy.",
+    },
+    sec1Sub1: { JP: "（1）ユーザーからご提供いただく情報", EN: "(1) Information Provided by Users" },
+    sec1Sub1Desc: { JP: "ユーザーが本サービスを利用するために、ご提供いただく情報は以下のとおりです。", EN: "The information provided by users for utilizing the Service includes:" },
+    sec1Sub1Items: {
+      JP: ["氏名", "メールアドレス", "社名", "電話番号", "お問い合わせ種別", "入力フォームにユーザーが入力する情報"],
+      EN: ["Name", "Email Address", "Company Name", "Phone Number", "Inquiry Type", "Information entered by the user in the input forms"],
+    },
+    sec1Sub2: { JP: "（2）ユーザーが本サービスを利用するにあたって、当社が収集する情報", EN: "(2) Information Collected Automatically" },
+    sec1Sub2Desc: { JP: "当社は、本サービスへのアクセス状況やそのご利用方法に関する情報を収集することがあります。これには以下の情報が含まれます。", EN: "We may collect information regarding the access status and usage methods of the Service. This includes:" },
+    sec1Sub2Items: {
+      JP: ["端末情報", "ログ情報", "Cookie及び匿名ID", "位置情報"],
+      EN: ["Terminal Information", "Log Information", "Cookies and Anonymous IDs", "Location Information"],
+    },
+    sec1CookieNote: {
+      JP: "※当ウェブサイトでは、クッキー（Cookie）を使用することがあります。ホームページで使用するクッキーには、お客さまの個人情報（氏名やメールアドレス等）は一切含まれておりません。ブラウザの設定により無効にすることも可能です。",
+      EN: "*Our website may use cookies. Cookies used on this site do not contain any personal identification details (like name or email). You can disable cookies in your browser settings.",
+    },
+    sec2Title: { JP: "2. 利用者（個人）情報の利用", EN: "2. Use of Collected Information" },
+    sec2Desc: { JP: "本サービスにおける個人情報の利用目的は以下の通りです。", EN: "The purposes for which we use the collected personal information are as follows:" },
+    sec2Items: {
+      JP: ["お問い合わせの返信時"],
+      EN: ["Responding to client inquiries"],
+    },
+    sec2ThirdParty: {
+      JP: "当社は、以下の場合を除いてはお客様の断りなく第三者に個人情報を開示・提供することはいたしません。",
+      EN: "We will not disclose or provide personal information to third parties without the client's consent, except in the following cases:",
+    },
+    sec2ThirdPartyItems: {
+      JP: [
+        "a) 法令に基づく場合、及び国の機関若しくは地方公共団体又はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合。",
+        "b) 人の生命、身体又は財産の保護のために必要がある場合であって、本人の同意を得ることが困難である場合。"
+      ],
+      EN: [
+        "a) When required by laws and regulations, or when cooperation is necessary for national/local authorities to perform tasks defined by law.",
+        "b) When necessary to protect human life, physical safety, or property, and obtaining consent is difficult."
+      ],
+    },
+    sec3Title: { JP: "3. SSLの使用", EN: "3. SSL Encryption" },
+    sec3Desc: {
+      JP: "個人情報の入力時には、セキュリティ確保のため、これらの情報が傍受、妨害または改ざんされることを防ぐ目的でSSL（Secure Sockets Layer）技術を使用しております。SSLを利用する事でより安全に情報を送信する事が可能となります。",
+      EN: "To secure your personal information from interception or tampering during submission, we utilize SSL (Secure Sockets Layer) encryption technology. This ensures data is securely transmitted.",
+    },
+    sec4Title: { JP: "4. プライバシーポリシーの変更", EN: "4. Policy Changes" },
+    sec4Desc: {
+      JP: "収集する個人情報の変更、利用目的の変更、またはその他プライバシーポリシーの変更を行う際は、当ページへの変更をもって公表とさせていただきます。",
+      EN: "Any changes to the collected data categories, purposes of use, or other updates to this Policy will be announced by posting the updated version directly on this page.",
+    },
+    sec5Title: { JP: "5. その他", EN: "5. Intellectual Property & Contact" },
+    sec5Desc: {
+      JP: "本サイトに掲載されている商品の画像に関しては当社及び各メーカーに権利がございます。無断で使用されることの無いよう御願いいたします。",
+      EN: "All product images displayed on this site are the property of the Company and their respective manufacturers. Unauthorized use or reproduction is strictly prohibited.",
+    },
+    contactTitle: { JP: "お問い合わせ先", EN: "Contact Desk" },
+    contactItems: {
+      JP: ["スカイアクシーズ株式会社", "TEL: 090-5441-1033", "営業時間: 9:00～18:00"],
+      EN: ["SkyAxes Co., Ltd.", "TEL: 090-5441-1033", "Hours: 9:00 - 18:00 (JST)"],
+    },
+    date: { JP: "2020年6月1日制定", EN: "Established on June 1, 2020" }
+  },
 } as const;
 
 export type TranslationType = typeof t;

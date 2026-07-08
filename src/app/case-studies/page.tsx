@@ -19,6 +19,7 @@ const cases = [
     descEN: "Real-time 3D scan visualization for dental. Qt/OpenGL Windows desktop app.",
     href: "/case-studies/dental-3d-viewer",
     featured: true,
+    img: "/images/dental-screenshots.jpg",
   },
   {
     tagJP: "製造 / Manufacturing",
@@ -33,6 +34,7 @@ const cases = [
     descEN: "Real-time sensor data with automated defect detection. In production.",
     href: "/lineqc",
     featured: false,
+    img: "https://www.skyaxes.jp/wp-content/uploads/2020/06/product1-lineqc.jpg",
   },
   {
     tagJP: "産業 / Industrial",
@@ -47,6 +49,7 @@ const cases = [
     descEN: "AR-based work procedure visualization for manufacturing.",
     href: "/case-studies",
     featured: false,
+    img: "https://www.skyaxes.jp/wp-content/uploads/2020/06/product2-iot-ar-vr.jpg",
   },
 ];
 
@@ -78,7 +81,7 @@ export default function CaseStudiesPage() {
       <section className="section-white" style={{ paddingBlock: 80 }}>
         <div className="container-site">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cases.map(({ tagJP, tagEN, tagClass, metricJP, metricEN, metricColor, titleJP, titleEN, descJP, descEN, href, featured }) => (
+            {cases.map(({ tagJP, tagEN, tagClass, metricJP, metricEN, metricColor, titleJP, titleEN, descJP, descEN, href, featured, img }) => (
               <FadeInSection key={titleJP}>
                 <Link
                   href={href}
@@ -90,6 +93,13 @@ export default function CaseStudiesPage() {
                     borderWidth: featured ? 2 : 1,
                   }}
                 >
+                  <div style={{ width: "100%", height: 160, position: "relative", background: "#f8fafc", overflow: "hidden", borderBottom: "1px solid var(--color-border)" }}>
+                    <img
+                      src={img}
+                      alt={titleEN}
+                      className="w-full h-full object-cover block"
+                    />
+                  </div>
                   {featured && (
                     <div style={{ height: 4, background: "var(--color-clinical)" }} />
                   )}

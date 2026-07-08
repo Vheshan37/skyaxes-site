@@ -97,6 +97,7 @@ export default function Footer() {
           <div className="flex gap-6">
             <Link href="/contact" style={{ color: "rgba(255,255,255,0.4)" }}>お問い合わせ</Link>
             <Link href="/company" style={{ color: "rgba(255,255,255,0.4)" }}>会社概要</Link>
+            <Link href="/privacy-policy" style={{ color: "rgba(255,255,255,0.4)" }}>プライバシーポリシー</Link>
           </div>
         </div>
       </div>
