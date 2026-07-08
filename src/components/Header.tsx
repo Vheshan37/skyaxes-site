@@ -103,7 +103,7 @@ export default function Header() {
               aria-label="SkyAxes ホーム"
             >
               <img
-                src="https://www.skyaxes.jp/wp-content/themes/skyaxes/images/logo.png"
+                src="/images/logo.png"
                 alt="SkyAxes Logo"
                 width="160"
                 height="40"
