@@ -32,7 +32,8 @@ export default function Footer() {
       style={{ background: "var(--color-navy)", color: "#ffffff" }}
       aria-label="サイトフッター"
     >
-      <div className="container-site py-16">
+      <div className="footer-watermark">SKYAXES</div>
+      <div className="container-site py-16" style={{ position: "relative", zIndex: 1 }}>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand column */}
           <div className="md:col-span-1">

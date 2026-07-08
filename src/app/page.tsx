@@ -22,17 +22,26 @@ export default function HomePage() {
           HERO
       ════════════════════════════════ */}
       <section
-        className="section-white"
-        style={{ paddingTop: 80, paddingBottom: 88 }}
+        className="section-white watermark-container"
+        style={{ paddingTop: 104, paddingBottom: 112 }}
         aria-label="メインビジュアル"
       >
-        <div className="container-site">
+        <div className="text-watermark">SKYAXES</div>
+        <div className="container-site" style={{ position: "relative", zIndex: 1 }}>
           <div className="hero-grid">
             {/* ── Left copy ── */}
             <div className="hero-copy">
-              <p className="hero-eyebrow">
-                {th.hero.eyebrow[lang]}
-              </p>
+              <div className="flex items-center gap-3 flex-wrap mb-4">
+                <p className="hero-eyebrow" style={{ margin: 0 }}>
+                  {th.hero.eyebrow[lang]}
+                </p>
+                <div className="inline-flex items-center gap-1.5 bg-[#F0F5FA] border border-[#E5E9EF] rounded-full py-1 px-3 text-[11px] font-semibold text-navy uppercase tracking-wider">
+                  <svg className="w-3.5 h-3.5 text-amber-500 fill-amber-500" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                  </svg>
+                  <span>5.0 Star Rated Partner</span>
+                </div>
+              </div>
 
               <h1 className="hero-headline">
                 {th.hero.headline.part1[lang]}
@@ -131,7 +140,7 @@ export default function HomePage() {
       ════════════════════════════════ */}
       <section
         className="section-surface"
-        style={{ paddingBlock: 88 }}
+        style={{ paddingBlock: 112 }}
         aria-labelledby="services-heading"
       >
         <FadeInSection>
@@ -146,42 +155,91 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="services-grid">
-              {services.map(({ icon, titleEN, titleJP, descEN, descJP, href, accentColor, accentBg, hoverClass, tag }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`service-card ${hoverClass}`}
-                  aria-label={`${titleEN} サービスページへ`}
-                >
-                  <div className="service-card-top">
-                    <div
-                      className="service-icon"
-                      style={{ background: accentBg, color: accentColor }}
+            <div className="services-container">
+              {/* Featured Offshore Service Card */}
+              {(() => {
+                const s = services[0];
+                return (
+                  <FadeInSection key={s.href}>
+                    <Link
+                      href={s.href}
+                      className="featured-service-card"
+                      aria-label={`${s.titleEN} サービスページへ`}
                     >
-                      {icon}
-                    </div>
-                    <span
-                      className="service-tag"
-                      style={{ color: accentColor, background: accentBg }}
+                      <div className="flex flex-col">
+                        <div className="service-card-top" style={{ marginBottom: 24 }}>
+                          <div
+                            className="service-icon"
+                            style={{ background: s.accentBg, color: s.accentColor }}
+                          >
+                            {s.icon}
+                          </div>
+                          <span
+                            className="service-tag"
+                            style={{ color: s.accentColor, background: s.accentBg }}
+                          >
+                            {s.tag}
+                          </span>
+                        </div>
+                        <h3 className="service-title-en" style={{ fontSize: 24, marginBottom: 8, fontFamily: lang === "JP" ? "var(--font-noto)" : "var(--font-jakarta)" }}>
+                          {lang === "JP" ? s.titleJP : s.titleEN}
+                        </h3>
+                        <p className="service-desc" style={{ fontSize: 15, lineHeight: 1.75, maxWidth: 520, margin: 0 }}>
+                          {lang === "JP" ? s.descJP : s.descEN}
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-start md:items-end justify-center">
+                        <span
+                          className="btn-primary"
+                          style={{ background: s.accentColor, pointerEvents: "none" }}
+                        >
+                          {th.servicesSection.learnMore[lang]}
+                        </span>
+                      </div>
+                    </Link>
+                  </FadeInSection>
+                );
+              })()}
+
+              {/* Secondary Services Grid */}
+              <div className="secondary-services-grid">
+                {services.slice(1).map((s, i) => (
+                  <FadeInSection key={s.href} className={`delay-${(i + 1) * 100}`}>
+                    <Link
+                      href={s.href}
+                      className={`secondary-service-card ${s.hoverClass.replace('service-card-', 'secondary-service-card-')}`}
+                      aria-label={`${s.titleEN} サービスページへ`}
                     >
-                      {tag}
-                    </span>
-                  </div>
-                  <h3 className="service-title-en" style={{ fontFamily: lang === "JP" ? "var(--font-noto)" : "var(--font-jakarta)" }}>
-                    {lang === "JP" ? titleJP : titleEN}
-                  </h3>
-                  <p className="service-desc">
-                    {lang === "JP" ? descJP : descEN}
-                  </p>
-                  <p
-                    className="service-link"
-                    style={{ color: accentColor }}
-                  >
-                    {th.servicesSection.learnMore[lang]}
-                  </p>
-                </Link>
-              ))}
+                      <div className="service-card-top">
+                        <div
+                          className="service-icon"
+                          style={{ background: s.accentBg, color: s.accentColor }}
+                        >
+                          {s.icon}
+                        </div>
+                        <span
+                          className="service-tag"
+                          style={{ color: s.accentColor, background: s.accentBg }}
+                        >
+                          {s.tag}
+                        </span>
+                      </div>
+                      <h3 className="service-title-en" style={{ fontFamily: lang === "JP" ? "var(--font-noto)" : "var(--font-jakarta)" }}>
+                        {lang === "JP" ? s.titleJP : s.titleEN}
+                      </h3>
+                      <p className="service-desc">
+                        {lang === "JP" ? s.descJP : s.descEN}
+                      </p>
+                      <p
+                        className="service-link"
+                        style={{ color: s.accentColor }}
+                      >
+                        {th.servicesSection.learnMore[lang]} →
+                      </p>
+                    </Link>
+                  </FadeInSection>
+                ))}
+              </div>
             </div>
           </div>
         </FadeInSection>
@@ -192,7 +250,7 @@ export default function HomePage() {
       ════════════════════════════════ */}
       <section
         className="section-white"
-        style={{ paddingBlock: 88 }}
+        style={{ paddingBlock: 112 }}
         aria-labelledby="case-study-heading"
       >
         <FadeInSection>
@@ -207,9 +265,9 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="case-study-card">
+            <div className="editorial-case-study">
               {/* Image panel */}
-              <div className="case-study-img-panel">
+              <div className="editorial-case-img-wrap">
                 <Image
                   src="/images/dental-screenshots.jpg"
                   alt="Dental 3D Viewer application screenshot — SkyAxes flagship project"
@@ -217,13 +275,10 @@ export default function HomePage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="case-study-img-overlay">
-                  <span className="tag-clinical">Healthcare</span>
-                </div>
               </div>
 
               {/* Content panel */}
-              <div className="case-study-content">
+              <div className="editorial-case-content">
                 <div className="case-accent-bar" style={{ background: "var(--color-clinical)" }} />
 
                 <h3 className="case-title">
@@ -234,33 +289,33 @@ export default function HomePage() {
                   {th.caseStudiesSection.dentalDesc[lang]}
                 </p>
 
-                <div className="case-metrics">
-                  <div className="case-metric">
+                <div className="editorial-metrics-row">
+                  <div className="editorial-metric-item">
                     <span
-                      className="case-metric-value"
+                      className="editorial-metric-num"
                       style={{ color: "var(--color-clinical)" }}
                     >
                       &lt;50ms
                     </span>
-                    <span className="case-metric-label">Rendering latency</span>
+                    <span className="editorial-metric-lbl">Latency</span>
                   </div>
-                  <div className="case-metric">
+                  <div className="editorial-metric-item">
                     <span
-                      className="case-metric-value"
+                      className="editorial-metric-num"
                       style={{ color: "var(--color-clinical)" }}
                     >
                       Qt/OpenGL
                     </span>
-                    <span className="case-metric-label">Technology stack</span>
+                    <span className="editorial-metric-lbl">Stack</span>
                   </div>
-                  <div className="case-metric">
+                  <div className="editorial-metric-item">
                     <span
-                      className="case-metric-value"
+                      className="editorial-metric-num"
                       style={{ color: "var(--color-clinical)" }}
                     >
                       Windows
                     </span>
-                    <span className="case-metric-label">Deployment</span>
+                    <span className="editorial-metric-lbl">OS</span>
                   </div>
                 </div>
 
@@ -290,7 +345,7 @@ export default function HomePage() {
       ════════════════════════════════ */}
       <section
         className="section-surface"
-        style={{ paddingBlock: 88 }}
+        style={{ paddingBlock: 112 }}
         aria-labelledby="proof-heading"
       >
         <FadeInSection>
@@ -306,55 +361,57 @@ export default function HomePage() {
             </div>
 
             <div className="proof-grid">
-              {proofItems.map((item) => (
-                <div key={item.title} className="proof-card">
-                  <div className="proof-img-wrap">
-                    <Image
-                      src={item.imgSrc}
-                      alt={item.imgAlt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="proof-img-overlay" />
-                  </div>
-                  <div className="proof-content">
-                    <span
-                      className="proof-tag"
-                      style={{ color: item.tagColor, background: item.tagBg }}
-                    >
-                      {item.tag}
-                    </span>
-                    <h3 className="proof-title">
-                      {lang === "JP" ? item.titleJP : item.title}
-                    </h3>
-                    <p className="proof-desc">
-                      {lang === "JP"
-                        ? (item.href === "/lineqc"
-                          ? "製造現場のラインデータをリアルタイムで収集・可視化。品質管理の自動化と不良品の早期検出を実現する実稼働システム。"
-                          : "組み立てラインや保守点検作業において、ARで手順をオーバーレイ表示。誤作業の防止と技術教育の効率化を実現。")
-                        : item.desc}
-                    </p>
-                    <div
-                      className="proof-metric-chip"
-                      style={{ borderColor: item.metricColor + "33", background: item.metricColor + "0d" }}
-                    >
-                      <span className="proof-metric-val" style={{ color: item.metricColor }}>
-                        {item.metric}
-                      </span>
-                      <span className="proof-metric-lbl">{item.metricLabel}</span>
+              {proofItems.map((item, i) => (
+                <FadeInSection key={item.title} className={`delay-${(i + 1) * 100}`}>
+                  <div className="proof-card">
+                    <div className="proof-img-wrap">
+                      <Image
+                        src={item.imgSrc}
+                        alt={item.imgAlt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="proof-img-overlay" />
                     </div>
-                    <Link
-                      href={item.href}
-                      className="proof-cta"
-                      style={{ color: item.tagColor }}
-                    >
-                      {lang === "JP"
-                        ? (item.href === "/lineqc" ? "LineQCの詳細を見る →" : "3D/VR/ARサービスを見る →")
-                        : item.cta}
-                    </Link>
+                    <div className="proof-content">
+                      <span
+                        className="proof-tag"
+                        style={{ color: item.tagColor, background: item.tagBg }}
+                      >
+                        {item.tag}
+                      </span>
+                      <h3 className="proof-title">
+                        {lang === "JP" ? item.titleJP : item.title}
+                      </h3>
+                      <p className="proof-desc">
+                        {lang === "JP"
+                          ? (item.href === "/lineqc"
+                            ? "製造現場のラインデータをリアルタイムで収集・可視化。品質管理の自動化と不良品の早期検出を実現する実稼働システム。"
+                            : "組み立てラインや保守点検作業において、ARで手順をオーバーレイ表示。誤作業の防止と技術教育の効率化を実現。")
+                          : item.desc}
+                      </p>
+                      <div
+                        className="proof-metric-chip"
+                        style={{ borderColor: item.metricColor + "33", background: item.metricColor + "0d" }}
+                      >
+                        <span className="proof-metric-val" style={{ color: item.metricColor }}>
+                          {item.metric}
+                        </span>
+                        <span className="proof-metric-lbl">{item.metricLabel}</span>
+                      </div>
+                      <Link
+                        href={item.href}
+                        className="proof-cta"
+                        style={{ color: item.tagColor }}
+                      >
+                        {lang === "JP"
+                          ? (item.href === "/lineqc" ? "LineQCの詳細を見る →" : "3D/VR/ARサービスを見る →")
+                          : item.cta}
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </FadeInSection>
               ))}
             </div>
           </div>
@@ -366,7 +423,7 @@ export default function HomePage() {
       ════════════════════════════════ */}
       <section
         className="section-white"
-        style={{ paddingBlock: 88 }}
+        style={{ paddingBlock: 112 }}
         aria-labelledby="flow-heading"
       >
         <FadeInSection>
@@ -383,18 +440,19 @@ export default function HomePage() {
 
             <div className="flow-grid">
               {th.flowSection.steps.map(({ num, JP, EN }, i) => (
-                <div key={num} className="flow-step">
-                  {/* connector line */}
-                  {i < th.flowSection.steps.length - 1 && (
-                    <div className="flow-connector" aria-hidden="true" />
-                  )}
-                  <div className="flow-circle">
-                    <span>{num}</span>
+                <FadeInSection key={num} className={`delay-${(i + 1) * 50}`}>
+                  <div className="flow-step-card">
+                    <div className="flow-circle-badge">
+                      <span>{num}</span>
+                    </div>
+                    <p className="flow-step-label-jp" style={{ fontFamily: "var(--font-noto)" }}>
+                      {JP}
+                    </p>
+                    <p className="flow-step-label-en">
+                      {EN}
+                    </p>
                   </div>
-                  <p className="flow-label-jp" style={{ fontFamily: "var(--font-noto)" }}>
-                    {lang === "JP" ? JP : EN}
-                  </p>
-                </div>
+                </FadeInSection>
               ))}
             </div>
 
