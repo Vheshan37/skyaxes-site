@@ -1,33 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
+import RippleDisplacementSlider from "@/components/ui/ripple-displacement-slider";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { proofItems } from "@/lib/data/data";
 
 export default function SupportingProof() {
   const { lang } = useLanguage();
-  const [lineQcImageIndex, setLineQcImageIndex] = useState(0);
-  const [arImageIndex, setArImageIndex] = useState(0);
 
-  const lineQcImages = [
-    "https://www.skyaxes.jp/wp-content/uploads/2021/10/LineQC2.png",
-    "https://www.skyaxes.jp/wp-content/uploads/2021/10/xchart-cp-cpk.png",
+  const lineQcSlides = [
+    { title: "LineQC 1", description: "", image: "/images/lineqc-2.png" },
+    { title: "LineQC 2", description: "", image: "/images/lineqc-chart.png" }
   ];
 
-  const arImages = [
-    "https://www.skyaxes.jp/wp-content/uploads/2020/06/image_recognition.jpg",
-    "https://www.skyaxes.jp/wp-content/uploads/2020/06/product2-iot-ar-vr.jpg",
+  const arSlides = [
+    { title: "AR 1", description: "", image: "/images/ar-recognition.jpg" },
+    { title: "AR 2", description: "", image: "/images/ar-iot.jpg" }
   ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setLineQcImageIndex((prev) => (prev === 0 ? 1 : 0));
-      setArImageIndex((prev) => (prev === 0 ? 1 : 0));
-    }, 4000); // Premium smooth interval
-    return () => clearInterval(timer);
-  }, []);
 
   return (
     <section
@@ -53,25 +44,9 @@ export default function SupportingProof() {
                 <div className="proof-card">
                   <div className="proof-img-wrap relative overflow-hidden" style={{ minHeight: 220 }}>
                     {i === 0 ? (
-                      lineQcImages.map((src, idx) => (
-                        <img
-                          key={src}
-                          src={src}
-                          alt={item.imgAlt}
-                          className="absolute inset-0 w-full h-full object-cover block transition-opacity duration-1000 ease-in-out"
-                          style={{ opacity: lineQcImageIndex === idx ? 1 : 0 }}
-                        />
-                      ))
+                      <RippleDisplacementSlider slides={lineQcSlides} className="absolute inset-0 w-full h-full" />
                     ) : i === 1 ? (
-                      arImages.map((src, idx) => (
-                        <img
-                          key={src}
-                          src={src}
-                          alt={item.imgAlt}
-                          className="absolute inset-0 w-full h-full object-cover block transition-opacity duration-1000 ease-in-out"
-                          style={{ opacity: arImageIndex === idx ? 1 : 0 }}
-                        />
-                      ))
+                      <RippleDisplacementSlider slides={arSlides} className="absolute inset-0 w-full h-full" />
                     ) : (
                       <img
                         src={item.imgSrc}
@@ -94,7 +69,7 @@ export default function SupportingProof() {
                     <p className="proof-desc">
                       {lang === "JP"
                         ? (item.href === "/lineqc"
-                          ? "製造現場のラインデータをリアルタイムで収集・可視化。品質管理の自動化と不良品の早期検出を実現する実稼働システム。"
+                          ? "製造現場のラインデータをリアルタイムで収集・可視化。品質管理の自動化と不良品の早期検出を実現する实稼働システム。"
                           : "組み立てラインや保守点検作業において、ARで手順をオーバーレイ表示。誤作業の防止と技術教育の効率化を実現。")
                         : item.desc}
                     </p>
