@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { useLanguage } from "@/lib/context/LanguageContext";
+import FadeInSection from "@/components/ui/FadeInSection";
 
 const partners = [
   {
@@ -201,57 +202,58 @@ export default function Brands2() {
 
           {/* Cards Carousel Row */}
           <div ref={scrollRef} className="partner-card-scroll pt-4">
-            {partners.map((p) => (
-              <div
-                key={p.name}
-                className={`partner-card ${p.highlight ? "highlighted" : "light"}`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span
-                      className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded border inline-block"
+            {partners.map((p, i) => (
+              <FadeInSection key={p.name} delay={i * 80} translateY={16}>
+                <div
+                  className={`partner-card ${p.highlight ? "highlighted" : "light"}`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded border inline-block"
+                        style={{
+                          background: p.highlight ? "rgba(74, 144, 196, 0.1)" : "rgba(26, 60, 110, 0.05)",
+                          borderColor: p.highlight ? "rgba(74, 144, 196, 0.2)" : "rgba(26, 60, 110, 0.1)",
+                          color: p.highlight ? "var(--color-clinical)" : "var(--color-navy)",
+                          fontFamily: "var(--font-jakarta)",
+                        }}
+                      >
+                        {p.tag[lang]}
+                      </span>
+                      <span className="text-[11px] text-muted" style={{ fontFamily: "var(--font-jakarta)" }}>
+                        {p.location[lang]}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold leading-snug mb-3 text-navy">
+                      {p.name}
+                    </h3>
+
+                    <p
+                      className="text-sm leading-relaxed text-muted"
+                    >
+                      {p.desc[lang]}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-start mt-6">
+                    {/* Partner Brand Logo inside card */}
+                    <div
+                      className="h-14 w-40 relative flex items-center justify-center rounded px-3"
                       style={{
-                        background: p.highlight ? "rgba(74, 144, 196, 0.1)" : "rgba(26, 60, 110, 0.05)",
-                        borderColor: p.highlight ? "rgba(74, 144, 196, 0.2)" : "rgba(26, 60, 110, 0.1)",
-                        color: p.highlight ? "var(--color-clinical)" : "var(--color-navy)",
-                        fontFamily: "var(--font-jakarta)",
+                        background: "#ffffff",
+                        border: "1px solid var(--color-border)",
                       }}
                     >
-                      {p.tag[lang]}
-                    </span>
-                    <span className="text-[11px] text-muted" style={{ fontFamily: "var(--font-jakarta)" }}>
-                      {p.location[lang]}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold leading-snug mb-3 text-navy">
-                    {p.name}
-                  </h3>
-
-                  <p
-                    className="text-sm leading-relaxed text-muted"
-                  >
-                    {p.desc[lang]}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-start mt-6">
-                  {/* Partner Brand Logo inside card */}
-                  <div
-                    className="h-14 w-40 relative flex items-center justify-center rounded px-3"
-                    style={{
-                      background: "#ffffff",
-                      border: "1px solid var(--color-border)",
-                    }}
-                  >
-                    <img
-                      src={p.logo}
-                      alt={`${p.name} logo`}
-                      className="max-h-11 max-w-full object-contain block opacity-90"
-                    />
+                      <img
+                        src={p.logo}
+                        alt={`${p.name} logo`}
+                        className="max-h-11 max-w-full object-contain block opacity-90"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </FadeInSection>
             ))}
           </div>
         </div>

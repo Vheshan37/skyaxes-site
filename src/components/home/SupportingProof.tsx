@@ -29,7 +29,7 @@ export default function SupportingProof() {
 
           <div className="proof-grid">
             {proofItems.map((item, i) => (
-              <FadeInSection key={item.title} className={`delay-${(i + 1) * 100}`}>
+              <FadeInSection key={item.title} delay={i * 120} translateY={16}>
                 <div className="proof-card">
                   <div className="proof-img-wrap">
                     <img

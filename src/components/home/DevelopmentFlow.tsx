@@ -39,7 +39,7 @@ export default function DevelopmentFlow() {
 
           <div className="flow-grid">
             {th.flowSection.steps.map(({ num, JP, EN }, i) => (
-              <FadeInSection key={num} className={`delay-${(i + 1) * 50}`}>
+              <FadeInSection key={num} delay={i * 80} translateY={12}>
                 <div className="flow-step-card">
                   <div className="flow-circle-badge">
                     <span>{num}</span>

@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { t } from "@/lib/data/language";
+import FadeInSection from "@/components/ui/FadeInSection";
 
 export default function Hero2() {
   const { lang, setLang } = useLanguage();
@@ -126,56 +127,66 @@ export default function Hero2() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
             {/* Left side text copy */}
             <div className="flex flex-col items-start text-left">
-              <div className="flex items-center gap-3 flex-wrap mb-5">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#4A90C4]" style={{ fontFamily: "var(--font-jakarta)" }}>
-                  {th.hero.eyebrow[lang]}
-                </span>
-              </div>
+              <FadeInSection translateY={8} delay={0}>
+                <div className="flex items-center gap-3 flex-wrap mb-5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#4A90C4]" style={{ fontFamily: "var(--font-jakarta)" }}>
+                    {th.hero.eyebrow[lang]}
+                  </span>
+                </div>
+              </FadeInSection>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6" style={{ fontFamily: "var(--font-jakarta)", color: "#ffffff" }}>
-                {th.hero.headline.part1[lang]}
-                <br />
-                <span className="text-[#2E75B6]">
-                  {th.hero.headline.part2[lang]}
-                </span>
-                <br />
-                <span className="text-white/80 font-semibold text-2xl md:text-3xl lg:text-4xl mt-3 block">
-                  {th.hero.headline.accent[lang]}
-                </span>
-              </h1>
+              <FadeInSection translateY={8} delay={100}>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6" style={{ fontFamily: "var(--font-jakarta)", color: "#ffffff" }}>
+                  {th.hero.headline.part1[lang]}
+                  <br />
+                  <span className="text-[#2E75B6]">
+                    {th.hero.headline.part2[lang]}
+                  </span>
+                  <br />
+                  <span className="text-white/80 font-semibold text-2xl md:text-3xl lg:text-4xl mt-3 block">
+                    {th.hero.headline.accent[lang]}
+                  </span>
+                </h1>
+              </FadeInSection>
 
-              <p className="text-base md:text-lg text-white/70 max-w-xl mb-8 leading-relaxed">
-                {th.hero.sub[lang]}
-              </p>
+              <FadeInSection translateY={8} delay={200}>
+                <p className="text-base md:text-lg text-white/70 max-w-xl mb-8 leading-relaxed">
+                  {th.hero.sub[lang]}
+                </p>
+              </FadeInSection>
 
-              <div className="flex flex-wrap gap-4 w-full sm:w-auto">
-                <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2E75B6] hover:bg-[#255e92] text-white text-base font-semibold rounded-lg py-3.5 px-6 transition-all duration-150" style={{ fontFamily: "var(--font-jakarta)" }}>
-                  {th.hero.ctaPrimary[lang]}
-                </Link>
-                <Link href="/case-studies" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-base font-semibold rounded-lg py-3.5 px-6 transition-all duration-150" style={{ fontFamily: "var(--font-jakarta)" }}>
-                  {th.hero.ctaSecondary[lang]}
-                </Link>
-              </div>
+              <FadeInSection translateY={8} delay={300}>
+                <div className="flex flex-wrap gap-4 w-full sm:w-auto">
+                  <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2E75B6] hover:bg-[#255e92] text-white text-base font-semibold rounded-lg py-3.5 px-6 transition-all duration-150" style={{ fontFamily: "var(--font-jakarta)" }}>
+                    {th.hero.ctaPrimary[lang]}
+                  </Link>
+                  <Link href="/case-studies" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-base font-semibold rounded-lg py-3.5 px-6 transition-all duration-150" style={{ fontFamily: "var(--font-jakarta)" }}>
+                    {th.hero.ctaSecondary[lang]}
+                  </Link>
+                </div>
+              </FadeInSection>
             </div>
 
             {/* Right side floating Dental Visual representation */}
             <div className="flex justify-center lg:justify-end w-full animate-float">
-              <div className="relative max-w-[500px] w-full border border-white/10 rounded-2xl overflow-hidden shadow-2xl bg-[#0b1a30]/80">
-                <img
-                  src="/images/hero-dental-3d.jpg"
-                  alt="Dental 3D Viewer flagship project by SkyAxes"
-                  className="w-full h-auto block opacity-90"
-                />
-                <div className="absolute bottom-4 left-4 right-4 bg-black/60 border border-white/10 backdrop-blur rounded-xl p-4 flex justify-between items-center">
-                  <div>
-                    <p className="text-[10px] text-white/50 uppercase tracking-widest" style={{ fontFamily: "var(--font-jakarta)" }}>Featured Case Study</p>
-                    <p className="text-sm font-bold text-white">Dental 3D Viewer</p>
+              <FadeInSection translateY={16} scaleStart={0.98} delay={450}>
+                <div className="relative max-w-[500px] w-full border border-white/10 rounded-2xl overflow-hidden shadow-2xl bg-[#0b1a30]/80">
+                  <img
+                    src="/images/hero-dental-3d.jpg"
+                    alt="Dental 3D Viewer flagship project by SkyAxes"
+                    className="w-full h-auto block opacity-90"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 bg-black/60 border border-white/10 backdrop-blur rounded-xl p-4 flex justify-between items-center">
+                    <div>
+                      <p className="text-[10px] text-white/50 uppercase tracking-widest" style={{ fontFamily: "var(--font-jakarta)" }}>Featured Case Study</p>
+                      <p className="text-sm font-bold text-white">Dental 3D Viewer</p>
+                    </div>
+                    <span className="bg-[#4A90C4]/20 text-[#4A90C4] text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border border-[#4A90C4]/30" style={{ fontFamily: "var(--font-jakarta)" }}>
+                      Qt / OpenGL · Windows
+                    </span>
                   </div>
-                  <span className="bg-[#4A90C4]/20 text-[#4A90C4] text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border border-[#4A90C4]/30" style={{ fontFamily: "var(--font-jakarta)" }}>
-                    Qt / OpenGL · Windows
-                  </span>
                 </div>
-              </div>
+              </FadeInSection>
             </div>
           </div>
         </div>

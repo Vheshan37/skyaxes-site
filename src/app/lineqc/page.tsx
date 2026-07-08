@@ -202,6 +202,25 @@ export default function LineQCPage() {
             grid-template-cols: 1fr 1fr;
           }
         }
+        .btn-lqc-green-outline {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 22px;
+          font-size: 14px;
+          font-weight: 600;
+          border-radius: 8px;
+          text-decoration: none;
+          color: var(--color-green-iot);
+          border: 1.5px solid var(--color-green-iot);
+          background: transparent;
+          transition: background 150ms ease, color 150ms ease;
+          cursor: pointer;
+        }
+        .btn-lqc-green-outline:hover {
+          background: var(--color-green-iot) !important;
+          color: #ffffff !important;
+        }
       `}</style>
 
       {/* IoT accent bar */}
@@ -265,9 +284,8 @@ export default function LineQCPage() {
                 href="https://www.skyaxes.jp/wp-content/uploads/2022/07/LineQC-2022.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline"
+                className="btn-lqc-green-outline"
                 id="lineqc-cta-catalog"
-                style={{ color: "var(--color-green-iot)", borderColor: "var(--color-green-iot)" }}
               >
                 {lang === "JP" ? "製品カタログ (PDF) ↓" : "Download Catalog (PDF) ↓"}
               </a>

@@ -34,7 +34,7 @@ export default function Services() {
             {(() => {
               const s = services[0];
               return (
-                <FadeInSection key={s.href}>
+                <FadeInSection key={s.href} delay={0} translateY={16}>
                   <Link
                     href={s.href}
                     className="featured-service-card"
@@ -78,7 +78,7 @@ export default function Services() {
             {/* Secondary Services Grid */}
             <div className="secondary-services-grid">
               {services.slice(1).map((s, i) => (
-                <FadeInSection key={s.href} className={`delay-${(i + 1) * 100}`}>
+                <FadeInSection key={s.href} delay={(i + 1) * 100} translateY={16}>
                   <Link
                     href={s.href}
                     className={`secondary-service-card ${s.hoverClass.replace('service-card-', 'secondary-service-card-')}`}
