@@ -29,7 +29,9 @@ export default function Hero2() {
           animation: float 6s ease-in-out infinite;
         }
         .hero2-container {
-          background: radial-gradient(circle at 70% 30%, #1c3d70 0%, #0b1a30 100%);
+          background: linear-gradient(rgba(11, 26, 48, 0.88), rgba(11, 26, 48, 0.94)), url('/images/hero-business-bg.jpg');
+          background-size: cover;
+          background-position: center;
           position: relative;
           overflow: hidden;
         }
@@ -64,7 +66,7 @@ export default function Hero2() {
         }
       `}</style>
 
-      <section className="hero2-container text-white py-12 md:py-20 flex flex-col justify-between min-h-[95vh] md:min-h-screen">
+      <section className="hero2-container text-white pt-6 pb-12 md:pt-8 md:pb-20 flex flex-col justify-between min-h-[95vh] md:min-h-screen">
         {/* ── EMBEDDED PRECISE GLASS NAVIGATION HEADER ── */}
         <div className="container-site w-full mb-10 md:mb-16 z-20">
           <div className="flex items-center justify-between gap-4">
@@ -188,27 +190,6 @@ export default function Hero2() {
           </div>
         </div>
 
-        {/* ── BOTTOM STATS ROW ── */}
-        <div className="container-site w-full mt-10 md:mt-16 z-10">
-          <div className="border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
-            <div>
-              <p className="text-2xl md:text-3xl font-extrabold text-white" style={{ fontFamily: "var(--font-jakarta)" }}>10+</p>
-              <p className="text-xs text-white/50 uppercase tracking-widest mt-1" style={{ fontFamily: "var(--font-jakarta)" }}>Years of Experience</p>
-            </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-extrabold text-[#0D8F6F]" style={{ fontFamily: "var(--font-jakarta)" }}>95%</p>
-              <p className="text-xs text-white/50 uppercase tracking-widest mt-1" style={{ fontFamily: "var(--font-jakarta)" }}>Success Rate</p>
-            </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-extrabold text-white" style={{ fontFamily: "var(--font-jakarta)" }}>250+</p>
-              <p className="text-xs text-white/50 uppercase tracking-widest mt-1" style={{ fontFamily: "var(--font-jakarta)" }}>Cases Completed</p>
-            </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-extrabold text-[#4A90C4]" style={{ fontFamily: "var(--font-jakarta)" }}>100%</p>
-              <p className="text-xs text-white/50 uppercase tracking-widest mt-1" style={{ fontFamily: "var(--font-jakarta)" }}>QA Support</p>
-            </div>
-          </div>
-        </div>
       </section>
     </>
   );

@@ -10,12 +10,22 @@ export default function DevelopmentFlow() {
   const th = t.home;
 
   return (
-    <section
-      className="section-white"
-      style={{ paddingBlock: 112 }}
-      aria-labelledby="flow-heading"
-    >
-      <FadeInSection>
+    <>
+      <style jsx>{`
+        .flow-section-bg {
+          background: linear-gradient(rgba(240, 245, 250, 0.84), rgba(240, 245, 250, 0.9)), url('/images/flow-light-bg.jpg');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          border-bottom: 1px solid var(--color-border);
+        }
+      `}</style>
+      <section
+        className="flow-section-bg"
+        style={{ paddingBlock: 112 }}
+        aria-labelledby="flow-heading"
+      >
+        <FadeInSection>
         <div className="container-site">
           <div className="section-header">
             <p className="section-eyebrow">{th.flowSection.eyebrow[lang]}</p>
@@ -60,5 +70,6 @@ export default function DevelopmentFlow() {
         </div>
       </FadeInSection>
     </section>
+    </>
   );
 }

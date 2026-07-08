@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Plus_Jakarta_Sans, Source_Code_Pro } from "next/font/google";
+import {
+  Noto_Sans_JP,
+  Plus_Jakarta_Sans,
+  Source_Code_Pro,
+} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -34,7 +38,15 @@ export const metadata: Metadata = {
   },
   description:
     "Japan-side PM-led offshore development for 3D/VR, IoT, and business systems. Realistic development costs, disciplined delivery. Manufacturing and dental/medical sectors.",
-  keywords: ["オフショア開発", "3D開発", "VR開発", "IoT", "業務システム", "SkyAxes", "skyaxes.jp"],
+  keywords: [
+    "オフショア開発",
+    "3D開発",
+    "VR開発",
+    "IoT",
+    "業務システム",
+    "SkyAxes",
+    "skyaxes.jp",
+  ],
   openGraph: {
     siteName: "SkyAxes",
     locale: "ja_JP",

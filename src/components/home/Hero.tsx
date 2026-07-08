@@ -25,12 +25,6 @@ export default function Hero() {
               <p className="hero-eyebrow" style={{ margin: 0 }}>
                 {th.hero.eyebrow[lang]}
               </p>
-              <div className="inline-flex items-center gap-1.5 bg-[#F0F5FA] border border-[#E5E9EF] rounded-full py-1 px-3 text-[11px] font-semibold text-navy uppercase tracking-wider">
-                <svg className="w-3.5 h-3.5 text-amber-500 fill-amber-500" viewBox="0 0 16 16">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-                <span>5.0 Star Rated Partner</span>
-              </div>
             </div>
 
             <h1 className="hero-headline">
@@ -54,22 +48,6 @@ export default function Hero() {
               <Link href="/case-studies" className="btn-outline hero-btn-secondary" id="hero-cta-cases">
                 {th.hero.ctaSecondary[lang]}
               </Link>
-            </div>
-
-            {/* Trust badges */}
-            <div className="hero-badges">
-              <span className="hero-badge">
-                <span className="hero-badge-dot" style={{ background: "var(--color-green-iot)" }} />
-                {th.hero.badgePm[lang]}
-              </span>
-              <span className="hero-badge">
-                <span className="hero-badge-dot" style={{ background: "var(--color-accent)" }} />
-                {th.hero.badgeCost[lang]}
-              </span>
-              <span className="hero-badge">
-                <span className="hero-badge-dot" style={{ background: "var(--color-clinical)" }} />
-                {th.hero.badgeQa[lang]}
-              </span>
             </div>
           </div>
 

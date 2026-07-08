@@ -77,7 +77,7 @@ export default function Header() {
     </div>
   );
 
-  if (pathname === "/") return null;
+
 
   return (
     <>

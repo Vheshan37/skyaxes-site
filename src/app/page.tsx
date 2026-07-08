@@ -9,13 +9,14 @@ import SupportingProof from "@/components/home/SupportingProof";
 import DevelopmentFlow from "@/components/home/DevelopmentFlow";
 import ContactCTA from "@/components/home/ContactCTA";
 import Hero2 from "@/components/hero2";
+import Brands2 from "@/components/home/Brands2";
 
 export default function HomePage() {
   return (
     <>
       {/* <Hero /> */}
-      <Hero2 />
-      <Brands />
+      <Hero />
+      <Brands2 />
       <Services />
       <FeaturedCaseStudy />
       <SupportingProof />
