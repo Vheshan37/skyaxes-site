@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import FadeInSection from "@/components/ui/FadeInSection";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { t } from "@/lib/data/language";
@@ -32,12 +31,10 @@ export default function FeaturedCaseStudy() {
           <div className="editorial-case-study">
             {/* Image panel */}
             <div className="editorial-case-img-wrap">
-              <Image
+              <img
                 src="/images/dental-screenshots.jpg"
                 alt="Dental 3D Viewer application screenshot — SkyAxes flagship project"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="w-full h-full object-cover block"
               />
             </div>
 

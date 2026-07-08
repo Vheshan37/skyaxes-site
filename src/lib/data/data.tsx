@@ -98,7 +98,7 @@ export const proofItems: ProofItem[] = [
     metricColor: "var(--color-green-iot)",
     href: "/lineqc",
     cta: "View LineQC →",
-    imgSrc: "/images/services-iot.jpg",
+    imgSrc: "https://www.skyaxes.jp/wp-content/uploads/2020/06/product1-lineqc.jpg",
     imgAlt: "LineQC manufacturing line quality control system dashboard",
   },
   {
@@ -113,7 +113,7 @@ export const proofItems: ProofItem[] = [
     metricColor: "var(--color-accent)",
     href: "/services/3dvrar",
     cta: "View 3D/VR/AR Services →",
-    imgSrc: "/images/dental-screenshots.jpg",
+    imgSrc: "https://www.skyaxes.jp/wp-content/uploads/2020/06/product2-iot-ar-vr.jpg",
     imgAlt: "AR industrial training system overlaying assembly instructions",
   },
 ];

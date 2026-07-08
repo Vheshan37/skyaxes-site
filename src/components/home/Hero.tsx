@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { t } from "@/lib/data/language";
@@ -54,15 +53,12 @@ export default function Hero() {
           {/* ── Right: hero image ── */}
           <div className="hero-visual" aria-hidden="true">
             <div className="hero-img-wrap">
-              <Image
-                src="/images/hero-dental-3d.jpg"
-                alt="Dental 3D Viewer — flagship case study developed by SkyAxes"
-                width={700}
-                height={525}
-                className="w-full h-auto block"
-                priority
-                style={{ borderRadius: 12 }}
-              />
+                <img
+                  src="/images/hero-dental-3d.jpg"
+                  alt="Dental 3D Viewer — flagship case study developed by SkyAxes"
+                  className="w-full h-auto block"
+                  style={{ borderRadius: 12 }}
+                />
               {/* Floating badge */}
               <div className="hero-float-badge">
                 <p className="hero-float-label">Featured case study</p>

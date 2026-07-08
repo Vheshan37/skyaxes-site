@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
 import { useLanguage } from "@/lib/context/LanguageContext";
@@ -99,12 +98,10 @@ export default function ThreeDVRPage() {
               </Link>
             </div>
             <div>
-              <Image
+              <img
                 src="/images/hero-dental-3d.jpg"
                 alt={lang === "JP" ? "歯科用3Dビューア" : "Dental 3D Viewer"}
-                width={600}
-                height={450}
-                className="w-full h-auto rounded-xl"
+                className="w-full h-auto rounded-xl block"
                 style={{ border: "1px solid var(--color-border)", boxShadow: "var(--shadow-card)" }}
               />
             </div>
@@ -170,14 +167,12 @@ export default function ThreeDVRPage() {
                 ? "歯科用3Dビューア — 画面スクリーンショット"
                 : "Dental 3D Viewer — Screenshots"}
             </h2>
-            <Image
+            <img
               src="/images/dental-screenshots.jpg"
               alt={lang === "JP"
                 ? "歯科用3Dビューア — 咬合面観・矢状断スライス・全顎3Dスキャン"
                 : "Dental 3D Viewer — Occlusal view · Cross-section slice · Full arch 3D scan"}
-              width={1200}
-              height={500}
-              className="w-full h-auto rounded-xl"
+              className="w-full h-auto rounded-xl block"
               style={{ border: "1px solid var(--color-border)", boxShadow: "var(--shadow-card)" }}
             />
             <p

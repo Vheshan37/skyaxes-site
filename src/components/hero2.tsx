@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { t } from "@/lib/data/language";
 
@@ -29,7 +28,7 @@ export default function Hero2() {
           animation: float 6s ease-in-out infinite;
         }
         .hero2-container {
-          background: linear-gradient(rgba(11, 26, 48, 0.88), rgba(11, 26, 48, 0.94)), url('/images/hero-business-bg.jpg');
+          background: linear-gradient(rgba(11, 26, 48, 0.88), rgba(11, 26, 48, 0.94)), url('https://www.skyaxes.jp/wp-content/themes/skyaxes/images/home_img_c.jpg');
           background-size: cover;
           background-position: center;
           position: relative;
@@ -128,15 +127,9 @@ export default function Hero2() {
             {/* Left side text copy */}
             <div className="flex flex-col items-start text-left">
               <div className="flex items-center gap-3 flex-wrap mb-5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#2E75B6] bg-white/5 border border-white/10 rounded-full px-3.5 py-1" style={{ fontFamily: "var(--font-jakarta)" }}>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#4A90C4]" style={{ fontFamily: "var(--font-jakarta)" }}>
                   {th.hero.eyebrow[lang]}
                 </span>
-                <div className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full py-1 px-3 text-[11px] font-semibold text-white uppercase tracking-wider">
-                  <svg className="w-3.5 h-3.5 text-amber-500 fill-amber-500" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
-                  <span>5.0 Star Rated Partner</span>
-                </div>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6" style={{ fontFamily: "var(--font-jakarta)", color: "#ffffff" }}>
@@ -168,13 +161,10 @@ export default function Hero2() {
             {/* Right side floating Dental Visual representation */}
             <div className="flex justify-center lg:justify-end w-full animate-float">
               <div className="relative max-w-[500px] w-full border border-white/10 rounded-2xl overflow-hidden shadow-2xl bg-[#0b1a30]/80">
-                <Image
+                <img
                   src="/images/hero-dental-3d.jpg"
                   alt="Dental 3D Viewer flagship project by SkyAxes"
-                  width={600}
-                  height={450}
                   className="w-full h-auto block opacity-90"
-                  priority
                 />
                 <div className="absolute bottom-4 left-4 right-4 bg-black/60 border border-white/10 backdrop-blur rounded-xl p-4 flex justify-between items-center">
                   <div>

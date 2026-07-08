@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
 import { useLanguage } from "@/lib/context/LanguageContext";
@@ -231,11 +230,9 @@ export default function DentalCaseStudyPage() {
                 className="overflow-hidden rounded-xl"
                 style={{ border: "1px solid var(--color-border)", boxShadow: "var(--shadow-card)" }}
               >
-                <Image
+                <img
                   src="/images/dental-screenshots.jpg"
                   alt="歯科用3Dビューア スクリーンショット — 咬合面観・矢状断スライス・全顎3Dスキャン"
-                  width={1200}
-                  height={500}
                   className="w-full h-auto block"
                 />
               </div>

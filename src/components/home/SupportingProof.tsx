@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import FadeInSection from "@/components/ui/FadeInSection";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { proofItems } from "@/lib/data/data";
@@ -33,12 +32,10 @@ export default function SupportingProof() {
               <FadeInSection key={item.title} className={`delay-${(i + 1) * 100}`}>
                 <div className="proof-card">
                   <div className="proof-img-wrap">
-                    <Image
+                    <img
                       src={item.imgSrc}
                       alt={item.imgAlt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="w-full h-full object-cover block"
                     />
                     <div className="proof-img-overlay" />
                   </div>
