@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import FadeInSection from "@/components/ui/FadeInSection";
 import { useLanguage } from "@/lib/context/LanguageContext";
@@ -8,6 +8,26 @@ import { proofItems } from "@/lib/data/data";
 
 export default function SupportingProof() {
   const { lang } = useLanguage();
+  const [lineQcImageIndex, setLineQcImageIndex] = useState(0);
+  const [arImageIndex, setArImageIndex] = useState(0);
+
+  const lineQcImages = [
+    "https://www.skyaxes.jp/wp-content/uploads/2021/10/LineQC2.png",
+    "https://www.skyaxes.jp/wp-content/uploads/2021/10/xchart-cp-cpk.png",
+  ];
+
+  const arImages = [
+    "https://www.skyaxes.jp/wp-content/uploads/2020/06/image_recognition.jpg",
+    "https://www.skyaxes.jp/wp-content/uploads/2020/06/product2-iot-ar-vr.jpg",
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setLineQcImageIndex((prev) => (prev === 0 ? 1 : 0));
+      setArImageIndex((prev) => (prev === 0 ? 1 : 0));
+    }, 4000); // Premium smooth interval
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section
@@ -31,12 +51,34 @@ export default function SupportingProof() {
             {proofItems.map((item, i) => (
               <FadeInSection key={item.title} delay={i * 120} translateY={16}>
                 <div className="proof-card">
-                  <div className="proof-img-wrap">
-                    <img
-                      src={item.imgSrc}
-                      alt={item.imgAlt}
-                      className="w-full h-full object-cover block"
-                    />
+                  <div className="proof-img-wrap relative overflow-hidden" style={{ minHeight: 220 }}>
+                    {i === 0 ? (
+                      lineQcImages.map((src, idx) => (
+                        <img
+                          key={src}
+                          src={src}
+                          alt={item.imgAlt}
+                          className="absolute inset-0 w-full h-full object-cover block transition-opacity duration-1000 ease-in-out"
+                          style={{ opacity: lineQcImageIndex === idx ? 1 : 0 }}
+                        />
+                      ))
+                    ) : i === 1 ? (
+                      arImages.map((src, idx) => (
+                        <img
+                          key={src}
+                          src={src}
+                          alt={item.imgAlt}
+                          className="absolute inset-0 w-full h-full object-cover block transition-opacity duration-1000 ease-in-out"
+                          style={{ opacity: arImageIndex === idx ? 1 : 0 }}
+                        />
+                      ))
+                    ) : (
+                      <img
+                        src={item.imgSrc}
+                        alt={item.imgAlt}
+                        className="w-full h-full object-cover block"
+                      />
+                    )}
                     <div className="proof-img-overlay" />
                   </div>
                   <div className="proof-content">

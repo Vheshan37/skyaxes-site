@@ -448,11 +448,13 @@ body {
   position: absolute;
   bottom: -18px;
   left: -18px;
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
   padding: 12px 18px;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 8px 32px rgba(26, 60, 110, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   z-index: 10;
 }
 @media (max-width: 1023px) {
@@ -559,20 +561,23 @@ body {
 }
 .secondary-service-card {
   background: #ffffff;
-  border-top: 3px solid var(--color-border);
-  border-bottom: none;
-  border-left: none;
-  border-right: none;
-  padding: 32px 8px;
+  border: 1.5px solid var(--color-border);
+  border-top: 4px solid var(--color-border);
+  border-radius: 16px;
+  padding: 32px 28px;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  transition: border-color 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(26, 60, 110, 0.02);
+  transition: border-color 400ms cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.secondary-service-card-clinical:hover { border-top-color: var(--color-clinical); }
-.secondary-service-card-iot:hover { border-top-color: var(--color-green-iot); }
+.secondary-service-card-clinical:hover { border-top-color: var(--color-clinical); border-color: var(--color-clinical); }
+.secondary-service-card-iot:hover { border-top-color: var(--color-green-iot); border-color: var(--color-green-iot); }
 .secondary-service-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
 }
 
 .service-card-top {
@@ -887,8 +892,9 @@ body {
   font-size: clamp(80px, 14vw, 190px);
   font-weight: 900;
   line-height: 1;
+  letter-spacing: 0.08em;
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(26, 60, 110, 0.025);
+  -webkit-text-stroke: 1px rgba(46, 117, 182, 0.04);
   pointer-events: none;
   user-select: none;
   z-index: 0;
