@@ -77,6 +77,8 @@ export default function Header() {
     </div>
   );
 
+  if (pathname === "/") return null;
+
   return (
     <>
       {/* Scroll sentinel — sits at the very top of the page */}
