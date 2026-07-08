@@ -322,6 +322,25 @@ export const t = {
     },
     date: { JP: "2020年6月1日制定", EN: "Established on June 1, 2020" }
   },
+
+  footer: {
+    desc: {
+      JP: "日本人PMが導く、3D/VR・IoT・業務システムのオフショア開発パートナー",
+      EN: "Japan-side PM-led offshore development partner for 3D/VR, IoT & business systems.",
+    },
+    servicesHeading: { JP: "サービス / Services", EN: "Services" },
+    worksHeading: { JP: "実績 / Works", EN: "Works" },
+    companyHeading: { JP: "会社 / Company", EN: "Company" },
+    offshore: { JP: "オフショア開発", EN: "Offshore Development" },
+    vr: { JP: "3D・VR・AR開発", EN: "3D / VR / AR Development" },
+    iot: { JP: "IoT・製造システム", EN: "IoT & Manufacturing Systems" },
+    caseStudies: { JP: "導入事例", EN: "Case Studies" },
+    dental: { JP: "歯科用3Dビューア", EN: "Dental 3D Viewer" },
+    lineqc: { JP: "LineQC", EN: "LineQC" },
+    about: { JP: "会社概要", EN: "Company Profile" },
+    contact: { JP: "お問い合わせ", EN: "Contact Us" },
+    privacy: { JP: "プライバシーポリシー", EN: "Privacy Policy" },
+  },
 } as const;
 
 export type TranslationType = typeof t;

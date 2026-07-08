@@ -18,7 +18,7 @@ const cases = [
     descJP: "歯科診療現場でのリアルタイム3Dスキャンデータ可視化。Qt/OpenGLによるWindowsデスクトップアプリ。",
     descEN: "Real-time 3D scan visualization for dental. Qt/OpenGL Windows desktop app.",
     href: "/case-studies/dental-3d-viewer",
-    featured: true,
+    featured: false,
     img: "/images/dental-screenshots.jpg",
   },
   {

@@ -95,29 +95,27 @@ export default function Header() {
           className="container-site flex items-center gap-6"
           style={{ height: 76 }}
         >
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex-shrink-0 flex items-center"
-            style={{
-              maxWidth: 180,
-              marginRight: 24,
-            }}
-            aria-label="SkyAxes ホーム"
-          >
-            <img
-              src="https://www.skyaxes.jp/wp-content/themes/skyaxes/images/logo.png"
-              alt="SkyAxes Logo"
-              width="160"
-              height="40"
-              className="object-contain"
-              style={{ maxHeight: 40, width: "auto" }}
-            />
-          </Link>
+          {/* Logo container */}
+          <div className="flex-shrink-0 flex items-center lg:w-[240px]">
+            <Link
+              href="/"
+              className="flex items-center"
+              aria-label="SkyAxes ホーム"
+            >
+              <img
+                src="https://www.skyaxes.jp/wp-content/themes/skyaxes/images/logo.png"
+                alt="SkyAxes Logo"
+                width="160"
+                height="40"
+                className="object-contain"
+                style={{ maxHeight: 40, width: "auto" }}
+              />
+            </Link>
+          </div>
 
           {/* Desktop nav links — hidden on mobile/tablet */}
           <nav
-            className="hidden lg:flex items-center flex-1 justify-center"
+            className="hidden lg:flex items-center justify-center flex-grow"
             style={{ gap: 32 }}
             aria-label="メインナビゲーション"
           >
@@ -150,7 +148,15 @@ export default function Header() {
           </nav>
 
           {/* Right side: lang + CTA */}
-          <div className="hidden md:flex items-center gap-4 ml-auto flex-shrink-0">
+          <div className="hidden lg:flex items-center justify-end gap-4 lg:w-[240px] flex-shrink-0">
+            <LangToggle />
+            <Link href="/contact" className="btn-primary text-sm" style={{ padding: "10px 16px" }}>
+              {lang === "JP" ? "お問い合わせ" : "Contact Us"}
+            </Link>
+          </div>
+
+          {/* Legacy Tablet container for Lang + CTA when screen is md but not lg */}
+          <div className="hidden md:flex lg:hidden items-center gap-4 ml-auto flex-shrink-0">
             <LangToggle />
             <Link href="/contact" className="btn-primary text-sm" style={{ padding: "10px 16px" }}>
               {lang === "JP" ? "お問い合わせ" : "Contact Us"}

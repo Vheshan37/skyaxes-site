@@ -1,32 +1,39 @@
-import Link from "next/link";
+"use client";
 
-const footerNav = [
-  {
-    heading: "サービス / Services",
-    links: [
-      { href: "/services/offshore", label: "オフショア開発" },
-      { href: "/services/3dvrar", label: "3D・VR・AR開発" },
-      { href: "/services/iot", label: "IoT・製造システム" },
-    ],
-  },
-  {
-    heading: "実績 / Works",
-    links: [
-      { href: "/case-studies", label: "導入事例" },
-      { href: "/case-studies/dental-3d-viewer", label: "歯科用3Dビューア" },
-      { href: "/lineqc", label: "LineQC" },
-    ],
-  },
-  {
-    heading: "会社 / Company",
-    links: [
-      { href: "/company", label: "会社概要" },
-      { href: "/contact", label: "お問い合わせ" },
-    ],
-  },
-];
+import Link from "next/link";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { t } from "@/lib/data/language";
 
 export default function Footer() {
+  const { lang } = useLanguage();
+  const tf = t.footer;
+
+  const footerNav = [
+    {
+      heading: tf.servicesHeading[lang],
+      links: [
+        { href: "/services/offshore", label: tf.offshore[lang] },
+        { href: "/services/3dvrar", label: tf.vr[lang] },
+        { href: "/services/iot", label: tf.iot[lang] },
+      ],
+    },
+    {
+      heading: tf.worksHeading[lang],
+      links: [
+        { href: "/case-studies", label: tf.caseStudies[lang] },
+        { href: "/case-studies/dental-3d-viewer", label: tf.dental[lang] },
+        { href: "/lineqc", label: tf.lineqc[lang] },
+      ],
+    },
+    {
+      heading: tf.companyHeading[lang],
+      links: [
+        { href: "/company", label: tf.about[lang] },
+        { href: "/contact", label: tf.contact[lang] },
+      ],
+    },
+  ];
+
   return (
     <footer
       style={{ background: "var(--color-navy)", color: "#ffffff" }}
@@ -48,7 +55,7 @@ export default function Footer() {
               className="text-sm leading-relaxed mb-6"
               style={{ color: "rgba(255,255,255,0.65)", fontFamily: "var(--font-noto)", maxWidth: 260 }}
             >
-              日本人PMが導く、3D/VR・IoT・業務システムのオフショア開発パートナー
+              {tf.desc[lang]}
             </p>
             <p
               className="text-xs"
@@ -95,9 +102,15 @@ export default function Footer() {
         >
           <p>© {new Date().getFullYear()} SkyAxes Co., Ltd. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/contact" style={{ color: "rgba(255,255,255,0.4)" }}>お問い合わせ</Link>
-            <Link href="/company" style={{ color: "rgba(255,255,255,0.4)" }}>会社概要</Link>
-            <Link href="/privacy-policy" style={{ color: "rgba(255,255,255,0.4)" }}>プライバシーポリシー</Link>
+            <Link href="/contact" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-noto)" }}>
+              {tf.contact[lang]}
+            </Link>
+            <Link href="/company" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-noto)" }}>
+              {tf.about[lang]}
+            </Link>
+            <Link href="/privacy-policy" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-noto)" }}>
+              {tf.privacy[lang]}
+            </Link>
           </div>
         </div>
       </div>
