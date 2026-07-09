@@ -2,31 +2,36 @@
 
 import { useActionState, useEffect, useRef, useState } from "react";
 import { submitContactForm, ContactFormState } from "@/app/actions/contact";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { t } from "@/lib/data/language";
 
 const initialState: ContactFormState = { status: "idle" };
 
-const budgetOptions = [
-  { value: "", label: "選択してください / Please select" },
-  { value: "under300", label: "〜300万円" },
-  { value: "300to1000", label: "300万〜1,000万円" },
-  { value: "1000to3000", label: "1,000万〜3,000万円" },
-  { value: "over3000", label: "3,000万円〜" },
-  { value: "consult", label: "ご相談 / Undecided" },
-];
-
-const timelineOptions = [
-  { value: "", label: "選択してください / Please select" },
-  { value: "1month", label: "1ヶ月以内" },
-  { value: "1to3", label: "1〜3ヶ月" },
-  { value: "3to6", label: "3〜6ヶ月" },
-  { value: "over6", label: "6ヶ月以上" },
-  { value: "undecided", label: "未定" },
-];
-
 export default function ContactForm() {
+  const { lang } = useLanguage();
+  const tf = t.contact.form;
+
   const [state, action, isPending] = useActionState(submitContactForm, initialState);
   const [antiSalesChecked, setAntiSalesChecked] = useState(false);
   const successRef = useRef<HTMLDivElement>(null);
+
+  const budgetOptions = [
+    { value: "", label: tf.budgetSelect[lang] },
+    { value: "under300", label: tf.budgetOptions.under300[lang] },
+    { value: "300to1000", label: tf.budgetOptions["300to1000"][lang] },
+    { value: "1000to3000", label: tf.budgetOptions["1000to3000"][lang] },
+    { value: "over3000", label: tf.budgetOptions.over3000[lang] },
+    { value: "consult", label: tf.budgetOptions.consult[lang] },
+  ];
+
+  const timelineOptions = [
+    { value: "", label: tf.timelineSelect[lang] },
+    { value: "1month", label: tf.timelineOptions["1month"][lang] },
+    { value: "1to3", label: tf.timelineOptions["1to3"][lang] },
+    { value: "3to6", label: tf.timelineOptions["3to6"][lang] },
+    { value: "over6", label: tf.timelineOptions.over6[lang] },
+    { value: "undecided", label: tf.timelineOptions.undecided[lang] },
+  ];
 
   // Scroll to success message
   useEffect(() => {
@@ -47,7 +52,7 @@ export default function ContactForm() {
           className="font-bold mb-3"
           style={{ fontSize: 22, color: "var(--color-navy)", fontFamily: "var(--font-noto)" }}
         >
-          お問い合わせを受け付けました
+          {tf.successTitle[lang]}
         </h2>
         <p style={{ fontSize: 15, color: "var(--color-text)", fontFamily: "var(--font-noto)", lineHeight: 1.8 }}>
           {state.message}
@@ -56,7 +61,7 @@ export default function ContactForm() {
           className="mt-2"
           style={{ fontSize: 13, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}
         >
-          We will respond within 2 business days.
+          {tf.successSub[lang]}
         </p>
       </div>
     );
@@ -88,17 +93,10 @@ export default function ContactForm() {
         </svg>
         <div>
           <p
-            className="font-semibold mb-2"
-            style={{ fontSize: 14, color: "#7a1a14", fontFamily: "var(--font-noto)", lineHeight: 1.7 }}
+            className="font-semibold"
+            style={{ fontSize: 14, color: "#7a1a14", fontFamily: "var(--font-noto)", lineHeight: 1.7, margin: 0 }}
           >
-            このフォームは、自社サービス・製品のご案内、広告掲載、業務提携以外の営業目的でのご連絡はご遠慮いただいております。
-            該当するご連絡には返信いたしかねますので、あらかじめご了承ください。
-          </p>
-          <p
-            style={{ fontSize: 13, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)", lineHeight: 1.6 }}
-          >
-            This form is intended for genuine business inquiries only. We are unable to respond to
-            unsolicited sales, advertising, or vendor-partnership pitches submitted through this channel.
+            {tf.warningTitle[lang]}
           </p>
         </div>
       </div>
@@ -122,9 +120,8 @@ export default function ContactForm() {
         <div className="form-field">
           <label htmlFor="companyName" className="bilingual-label mb-2 block">
             <span className="label-jp">
-              会社名&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
+              {tf.companyLabel[lang]}&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
             </span>
-            <span className="label-en">Company Name (required)</span>
           </label>
           <input
             id="companyName"
@@ -132,22 +129,21 @@ export default function ContactForm() {
             type="text"
             required
             autoComplete="organization"
-            placeholder="株式会社〇〇"
+            placeholder={tf.companyPlaceholder[lang]}
           />
         </div>
 
         {/* 部署名 */}
         <div className="form-field">
           <label htmlFor="department" className="bilingual-label mb-2 block">
-            <span className="label-jp">部署名</span>
-            <span className="label-en">Department (optional)</span>
+            <span className="label-jp">{tf.deptLabel[lang]}</span>
           </label>
           <input
             id="department"
             name="department"
             type="text"
             autoComplete="organization-title"
-            placeholder="システム部、経営企画室など"
+            placeholder={tf.deptPlaceholder[lang]}
           />
         </div>
 
@@ -155,9 +151,8 @@ export default function ContactForm() {
         <div className="form-field">
           <label htmlFor="contactName" className="bilingual-label mb-2 block">
             <span className="label-jp">
-              ご担当者名&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
+              {tf.nameLabel[lang]}&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
             </span>
-            <span className="label-en">Contact Name (required)</span>
           </label>
           <input
             id="contactName"
@@ -165,7 +160,7 @@ export default function ContactForm() {
             type="text"
             required
             autoComplete="name"
-            placeholder="山田 太郎"
+            placeholder={tf.namePlaceholder[lang]}
           />
         </div>
 
@@ -173,9 +168,8 @@ export default function ContactForm() {
         <div className="form-field">
           <label htmlFor="email" className="bilingual-label mb-2 block">
             <span className="label-jp">
-              メールアドレス&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
+              {tf.emailLabel[lang]}&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
             </span>
-            <span className="label-en">Email Address (required)</span>
           </label>
           <input
             id="email"
@@ -184,15 +178,14 @@ export default function ContactForm() {
             required
             autoComplete="email"
             inputMode="email"
-            placeholder="taro.yamada@example.co.jp"
+            placeholder={tf.emailPlaceholder[lang]}
           />
         </div>
 
         {/* 電話番号 */}
         <div className="form-field">
           <label htmlFor="phone" className="bilingual-label mb-2 block">
-            <span className="label-jp">電話番号</span>
-            <span className="label-en">Phone Number (optional)</span>
+            <span className="label-jp">{tf.phoneLabel[lang]}</span>
           </label>
           <input
             id="phone"
@@ -200,7 +193,7 @@ export default function ContactForm() {
             type="tel"
             autoComplete="tel"
             inputMode="tel"
-            placeholder="03-XXXX-XXXX"
+            placeholder={tf.phonePlaceholder[lang]}
           />
         </div>
 
@@ -208,9 +201,8 @@ export default function ContactForm() {
         <div className="form-field">
           <label htmlFor="budget" className="bilingual-label mb-2 block">
             <span className="label-jp">
-              ご予算感&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
+              {tf.budgetLabel[lang]}&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
             </span>
-            <span className="label-en">Project Budget (required)</span>
           </label>
           <div className="relative">
             <select id="budget" name="budget" required style={{ paddingRight: 40 }}>
@@ -231,9 +223,8 @@ export default function ContactForm() {
         <div className="form-field">
           <label htmlFor="timeline" className="bilingual-label mb-2 block">
             <span className="label-jp">
-              希望時期&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
+              {tf.timelineLabel[lang]}&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
             </span>
-            <span className="label-en">Desired Timeline (required)</span>
           </label>
           <div className="relative">
             <select id="timeline" name="timeline" required style={{ paddingRight: 40 }}>
@@ -254,16 +245,15 @@ export default function ContactForm() {
         <div className="form-field">
           <label htmlFor="message" className="bilingual-label mb-2 block">
             <span className="label-jp">
-              お問い合わせ内容&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
+              {tf.messageLabel[lang]}&nbsp;<span style={{ color: "var(--color-warning-red)" }}>*</span>
             </span>
-            <span className="label-en">Message / Project Overview (required)</span>
           </label>
           <textarea
             id="message"
             name="message"
             required
             rows={6}
-            placeholder="ご相談内容・プロジェクトの概要をご記入ください。&#10;Please describe your project or inquiry in detail."
+            placeholder={tf.messagePlaceholder[lang]}
           />
         </div>
 
@@ -296,14 +286,8 @@ export default function ContactForm() {
                 className="font-medium"
                 style={{ fontSize: 14, color: "var(--color-text)", fontFamily: "var(--font-noto)", lineHeight: 1.7 }}
               >
-                本お問い合わせが、自社製品・サービスの営業やご提案を目的としたものではないことを確認します。&nbsp;
+                {tf.confirmCheckbox[lang]}&nbsp;
                 <span style={{ color: "var(--color-warning-red)" }}>*</span>
-              </p>
-              <p
-                className="mt-1"
-                style={{ fontSize: 12, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)", lineHeight: 1.5 }}
-              >
-                I confirm this inquiry is not intended as a sales or marketing pitch.
               </p>
             </div>
           </label>
@@ -324,10 +308,10 @@ export default function ContactForm() {
                 <circle cx="9" cy="9" r="7" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
                 <path d="M9 2a7 7 0 0 1 7 7" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
               </svg>
-              送信中…
+              {tf.submittingBtn[lang]}
             </>
           ) : (
-            "送信する / Submit"
+            tf.submitBtn[lang]
           )}
         </button>
 
@@ -336,8 +320,7 @@ export default function ContactForm() {
             style={{ fontSize: 12, color: "var(--color-muted)", fontFamily: "var(--font-jakarta)" }}
             aria-live="polite"
           >
-            ※ 上の確認チェックボックスにチェックを入れると送信できます。
-            Check the confirmation box above to enable submission.
+            {tf.submitHint[lang]}
           </p>
         )}
       </div>

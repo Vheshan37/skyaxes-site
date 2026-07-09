@@ -214,14 +214,57 @@ export const t = {
       },
     },
     form: {
-      company: { JP: "会社名", EN: "Company Name" },
-      name: { JP: "お名前", EN: "Your Name" },
-      email: { JP: "メールアドレス", EN: "Email Address" },
-      phone: { JP: "電話番号", EN: "Phone Number" },
-      subject: { JP: "件名", EN: "Subject" },
-      message: { JP: "お問い合わせ内容", EN: "Message" },
-      submit: { JP: "送信する", EN: "Submit" },
-      required: { JP: "必須", EN: "Required" },
+      warningTitle: {
+        JP: "このフォームは、自社サービス・製品のご案内、広告掲載、業務提携以外の営業目的でのご連絡はご遠慮いただいております。該当するご連絡には返信いたしかねますので、あらかじめご了承ください。",
+        EN: "This form is intended for genuine business inquiries only. We are unable to respond to unsolicited sales, advertising, or vendor-partnership pitches submitted through this channel."
+      },
+      companyLabel: { JP: "会社名", EN: "Company Name" },
+      companyPlaceholder: { JP: "株式会社〇〇", EN: "e.g. Acme Corp" },
+      deptLabel: { JP: "部署名", EN: "Department" },
+      deptPlaceholder: { JP: "システム部、経営企画室など", EN: "e.g. IT Department" },
+      nameLabel: { JP: "ご担当者名", EN: "Contact Name" },
+      namePlaceholder: { JP: "山田 太郎", EN: "e.g. John Doe" },
+      emailLabel: { JP: "メールアドレス", EN: "Email Address" },
+      emailPlaceholder: { JP: "taro.yamada@example.co.jp", EN: "e.g. john.doe@example.com" },
+      phoneLabel: { JP: "電話番号", EN: "Phone Number" },
+      phonePlaceholder: { JP: "03-XXXX-XXXX", EN: "e.g. +81-3-XXXX-XXXX" },
+      budgetLabel: { JP: "ご予算感", EN: "Project Budget" },
+      budgetSelect: { JP: "選択してください", EN: "Please select" },
+      budgetOptions: {
+        under300: { JP: "〜300万円", EN: "Under ¥3M" },
+        "300to1000": { JP: "300万〜1,000万円", EN: "¥3M - ¥10M" },
+        "1000to3000": { JP: "1,000万〜3,000万円", EN: "¥10M - ¥30M" },
+        over3000: { JP: "3,000万円〜", EN: "Over ¥30M" },
+        consult: { JP: "ご相談 / 未定", EN: "Undecided / Discussion" }
+      },
+      timelineLabel: { JP: "希望時期", EN: "Desired Timeline" },
+      timelineSelect: { JP: "選択してください", EN: "Please select" },
+      timelineOptions: {
+        "1month": { JP: "1ヶ月以内", EN: "Within 1 Month" },
+        "1to3": { JP: "1〜3ヶ月", EN: "1 - 3 Months" },
+        "3to6": { JP: "3〜6ヶ月", EN: "3 - 6 Months" },
+        over6: { JP: "6ヶ月以上", EN: "More than 6 Months" },
+        undecided: { JP: "未定", EN: "Undecided" }
+      },
+      messageLabel: { JP: "お問い合わせ内容", EN: "Message / Project Overview" },
+      messagePlaceholder: {
+        JP: "ご相談内容・プロジェクトの概要をご記入ください。",
+        EN: "Please describe your project outline, tech stack requirements, or questions in detail."
+      },
+      confirmCheckbox: {
+        JP: "本お問い合わせが、自社製品・サービスの営業やご提案を目的としたものではないことを確認します。",
+        EN: "I confirm this inquiry is not intended as a sales or marketing pitch."
+      },
+      submitBtn: { JP: "送信する", EN: "Submit" },
+      submittingBtn: { JP: "送信中…", EN: "Submitting..." },
+      submitHint: {
+        JP: "※ 上の確認チェックボックスにチェックを入れると送信できます。",
+        EN: "Check the confirmation box above to enable submission."
+      },
+      successTitle: { JP: "お問い合わせを受け付けました", EN: "Inquiry Received Successfully" },
+      successSub: { JP: "2営業日以内にご返信いたします", EN: "We respond within 2 business days." },
+      required: { JP: "必須", EN: "required" },
+      optional: { JP: "任意", EN: "optional" },
     },
   },
 
