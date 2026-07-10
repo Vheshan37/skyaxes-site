@@ -9,7 +9,7 @@ import { useLanguage } from "@/lib/context/LanguageContext";
 const navLinks = [
   { href: "/services", labelJP: "サービス", labelEN: "Services" },
   { href: "/case-studies", labelJP: "事例", labelEN: "Case Studies" },
-  { href: "/lineqc", labelJP: "LineQC", labelEN: "LineQC" },
+  // { href: "/lineqc", labelJP: "LineQC", labelEN: "LineQC" },
   { href: "/company", labelJP: "会社概要", labelEN: "Company" },
 ];
 
