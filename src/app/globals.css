@@ -358,7 +358,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: #38bdf8; /* Bright cyan for contrast */
   margin: 0 0 20px;
 }
 
@@ -368,18 +368,18 @@ body {
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
-  color: var(--color-navy);
+  color: #ffffff; /* High contrast white */
   margin: 0 0 24px;
 }
 .hero-headline-accent {
-  color: var(--color-accent);
+  color: #38bdf8; /* Bright cyan accent */
 }
 
 .hero-sub {
   font-family: var(--font-jakarta);
   font-size: 16px;
   line-height: 1.75;
-  color: var(--color-muted);
+  color: rgba(240, 245, 250, 0.85); /* Semi-transparent light blue-gray */
   max-width: 500px;
   margin: 0 0 32px;
 }
@@ -401,6 +401,13 @@ body {
   font-size: 15px;
   font-weight: 600;
   padding: 12px 24px;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
 }
 
 .hero-badges {

@@ -12,8 +12,12 @@ export default function Hero() {
 
   return (
     <section
-      className="section-white watermark-container"
-      style={{ paddingTop: 104, paddingBottom: 112 }}
+      className="watermark-container bg-cover bg-center bg-no-repeat relative"
+      style={{ 
+        paddingTop: 104, 
+        paddingBottom: 112,
+        backgroundImage: 'linear-gradient(rgba(18, 43, 82, 0.72), rgba(18, 43, 82, 0.52)), url(/images/content-img/hero-banner.png)'
+      }}
       aria-label="メインビジュアル"
     >
       <div className="text-watermark">SKYAXES</div>
