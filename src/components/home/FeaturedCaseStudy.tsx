@@ -80,7 +80,7 @@ export default function FeaturedCaseStudy() {
                 </div>
               </div>
 
-              <div className="case-ctas">
+              <div className="case-ctas flex gap-2 items-center">
                 <Link
                   href="/case-studies/dental-3d-viewer"
                   className="btn-primary"
